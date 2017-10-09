@@ -6,16 +6,49 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9, user-scalable=no">
   <title>РГЗ</title>
+
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/tether.min.css">
   <link rel="stylesheet" href="css/styles.css">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Russo+One&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
+
+  <script src="js/jquery-3.2.1.min.js"></script>
+  <script src="js/tether.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
   <script src="js/script.js"></script>
 </head>
 
 <body>
-  <div id="navi"></div>
-  <div id="stat"></div>
-  <div id="book"></div>
-  <div id="info"></div>
-  <div id="foot"></div>
+  <div id="navi">
+    <div class="navi-landing">ПОМОЋНИ&nbsp;ЦЕНТАР&nbsp;РЕПУБЛИЧКОГ&nbsp;ГЕОДЕТСКОГ&nbsp;ЗАВОДА</div>
+    <div id="navi-menu" class="row gone">
+      <div id="navi-book" class="col-4"><span>ЗАКАЗИВАЊЕ</span></div>
+      <div id="navi-stat" class="col-4"><span>СТАЊЕ&nbsp;ПРЕДМЕТА</span></div>
+      <div id="navi-info" class="col-4"><span>ИНФОРМАЦИЈЕ</span></div>
+    </div>
+  </div>
+  <div id="tiles" class="row">
+    <div id="book" class="tile col-4" onmouseover="RGZ.tileMouseOver(this);" onmouseout="RGZ.tileMouseOut();">
+      <div class="tile-img"></div>
+      <div class="tile-title">ЗАКАЗИВАЊЕ</div>
+      <div class="tile-text hidden">Закажите термин на шалтеру или у одређеним канцеларијама за предају захтева или предмета.</div>
+      <div class="tile-button hidden">ЗАКАЖИ&nbsp;ТЕРМИН</div>
+    </div>
+    <div id="stat" class="tile col-4" onmouseover="RGZ.tileMouseOver(this);" onmouseout="RGZ.tileMouseOut();">
+      <div class="tile-img"></div>
+      <div class="tile-title">СТАЊЕ&nbsp;ПРЕДМЕТА</div>
+      <div class="tile-text hidden">Сазнајте у ком степену обраде је Ваш захтев или предмет &mdash; потребан Вам је само деловодни број.</div>
+      <div class="tile-button hidden">ПОГЛЕДАЈ&nbsp;СТАЊЕ</div>
+    </div>
+    <div id="info" class="tile col-4" onmouseover="RGZ.tileMouseOver(this);" onmouseout="RGZ.tileMouseOut();">
+      <div class="tile-img"></div>
+      <div class="tile-title">ИНФОРМАЦИЈЕ</div>
+      <div class="tile-text hidden">Пронађите висине такси и неопходне обрасце за подношење одређеног захтева или погледајте најчешће постављана питања.</div>
+      <div class="tile-button hidden">ИДИ&nbsp;НА&nbsp;ИНФО</div>
+    </div>
+  </div>
+  <div id="foot">Copyright&nbsp;&copy;&nbsp;RGZ&nbsp;2017.&nbsp;All&nbsp;Rights&nbsp;Reserved.</div>
 </body>
 
 </html>

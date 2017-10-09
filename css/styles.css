@@ -1,0 +1,156 @@
+.hidden {
+  visibility: hidden;
+}
+
+.gone {
+  display: none;
+}
+
+body {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  font-family: 'Open Sans', sans-serif;
+  color: #333;
+  font-size: 2.5vh;
+}
+
+a, a:hover, a:focus, a:visited {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+#navi {
+  background-color: #E5EEC1;
+  width: 100%;
+  height: 7vh;
+  font-size: 3.3vh;
+  line-height: 7vh;
+  text-align: center;
+  font-family: 'Russo One', sans-serif;
+  color: #5A5050;
+  z-index: 1000;
+  position: relative;
+  -webkit-box-shadow: 0 3px 1vh 0 #333;
+  -moz-box-shadow: 0 3px 1vh 0 #333;
+  box-shadow: 0 3px 1vh 0 #333;
+}
+
+#navi-menu>div>span {
+  padding-left: 2vh;
+  padding-right: 2vh;
+  height: 7vh;
+  display: inline-block;
+}
+
+#navi-menu>div>span:hover {
+  cursor: pointer;
+}
+
+#navi-menu>#navi-book>span:hover, #navi-menu>#navi-book>.active {
+  color: #6EBC7C;
+}
+
+#navi-menu>#navi-stat>span:hover, #navi-menu>#navi-stat>.active {
+  color: #3EACA8;
+}
+
+#navi-menu>#navi-info>span:hover, #navi-menu>#navi-info>.active {
+  color: #547A82;
+}
+
+#tiles {
+  height: 90vh;
+}
+
+#tiles>.tile {
+  height: 100%;
+  -webkit-transition: max-width 0.4s ease, flex 0.4s ease, background-color 0.4s ease;
+  -moz-transition: max-width 0.4s ease, flex 0.4s ease, background-color 0.4s ease;
+  transition: max-width 0.4s ease, flex 0.4s ease, background-color 0.4s ease;
+}
+
+#book {
+  background-color: #6EBC7C;
+}
+
+#stat {
+  background-color: #3EACA8;
+}
+
+#info {
+  background-color: #547A82;
+}
+
+.tile>.tile-img {
+  opacity: 0.4;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+#book>.tile-img {
+  background: url('../img/clock.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+#stat>.tile-img {
+  background: url('../img/archive.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+#info>.tile-img {
+  background: url('../img/info.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+#foot {
+  background-color: #5A5050;
+  height: 3vh;
+  line-height: 3vh;
+  font-size: 1.2vh;
+  color: #E5EEC1;
+  text-align: center;
+}
+
+.tile-title {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  font-family: 'Russo One', sans-serif;
+  line-height: 90vh;
+  text-align: center;
+  top: 0;
+  color: #E5EEC1;
+  font-size: 3vh;
+  letter-spacing: 2px;
+  -webkit-transition: top 0.4s ease, font-size 0.4s ease, color 0.4s ease;
+  -moz-transition: top 0.4s ease, font-size 0.4s ease, color 0.4s ease;
+  transition: top 0.4s ease, font-size 0.4s ease, color 0.4s ease;
+}
+
+.tile-text {
+  position: absolute;
+  top: 45vh;
+  opacity: 0;
+  padding-left: 10%;
+  padding-right: 10%;
+  text-align: center;
+  -webkit-transition: top 0.6s ease 0.2s, opacity 0.6s ease 0.2s;
+  -moz-transition: top 0.6s ease 0.2s, opacity 0.6s ease 0.2s;
+  transition: top 0.6s ease 0.2s, opacity 0.6s ease 0.2s;
+}
+
+@media (min-width: 1px) {
+  .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .row {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
