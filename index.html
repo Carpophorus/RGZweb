@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9, user-scalable=no">
   <title>РГЗ</title>
 
+  <link rel="stylesheet" href="css/font-awesome.min.css">
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/tether.min.css">
   <link rel="stylesheet" href="css/styles.css">
@@ -21,34 +22,51 @@
 
 <body>
   <div id="navi">
-    <div class="navi-landing">ПОМОЋНИ&nbsp;ЦЕНТАР&nbsp;РЕПУБЛИЧКОГ&nbsp;ГЕОДЕТСКОГ&nbsp;ЗАВОДА</div>
-    <div id="navi-menu" class="row gone">
-      <div id="navi-book" class="col-4"><span>ЗАКАЗИВАЊЕ</span></div>
-      <div id="navi-stat" class="col-4"><span>СТАЊЕ&nbsp;ПРЕДМЕТА</span></div>
-      <div id="navi-info" class="col-4"><span>ИНФОРМАЦИЈЕ</span></div>
+    <div id="navi-landing">ПОМОЋНИ&nbsp;ЦЕНТАР&nbsp;РЕПУБЛИЧКОГ&nbsp;ГЕОДЕТСКОГ&nbsp;ЗАВОДА</div>
+    <div id="navi-menu" class="row">
+      <div id="navi-home" class="col-3"><span onclick="$RGZ.navi(0);">ПОЧЕТНА</span></div>
+      <div id="navi-book" class="col-3"><span onclick="$RGZ.navi(1);">ЗАКАЗИВАЊЕ</span></div>
+      <div id="navi-stat" class="col-3"><span onclick="$RGZ.navi(2);">СТАЊЕ&nbsp;ПРЕДМЕТА</span></div>
+      <div id="navi-info" class="col-3"><span onclick="$RGZ.navi(3);">ИНФОРМАЦИЈЕ</span></div>
     </div>
   </div>
   <div id="tiles" class="row">
     <div id="book" class="tile col-4" onmouseover="RGZ.tileMouseOver(this);" onmouseout="RGZ.tileMouseOut();">
       <div class="tile-img"></div>
       <div class="tile-title">ЗАКАЗИВАЊЕ</div>
+      <div class="tile-line hidden"></div>
       <div class="tile-text hidden">Закажите термин на шалтеру или у одређеним канцеларијама за предају захтева или предмета.</div>
-      <div class="tile-button hidden">ЗАКАЖИ&nbsp;ТЕРМИН</div>
+      <div class="tile-button hidden" onclick="$RGZ.navi(1);">ЗАКАЖИ&nbsp;ТЕРМИН</div>
     </div>
     <div id="stat" class="tile col-4" onmouseover="RGZ.tileMouseOver(this);" onmouseout="RGZ.tileMouseOut();">
       <div class="tile-img"></div>
       <div class="tile-title">СТАЊЕ&nbsp;ПРЕДМЕТА</div>
+      <div class="tile-line hidden"></div>
       <div class="tile-text hidden">Сазнајте у ком степену обраде је Ваш захтев или предмет &mdash; потребан Вам је само деловодни број.</div>
-      <div class="tile-button hidden">ПОГЛЕДАЈ&nbsp;СТАЊЕ</div>
+      <div class="tile-button hidden" onclick="$RGZ.navi(2);">ПОГЛЕДАЈ&nbsp;СТАЊЕ</div>
     </div>
     <div id="info" class="tile col-4" onmouseover="RGZ.tileMouseOver(this);" onmouseout="RGZ.tileMouseOut();">
       <div class="tile-img"></div>
       <div class="tile-title">ИНФОРМАЦИЈЕ</div>
+      <div class="tile-line hidden"></div>
       <div class="tile-text hidden">Пронађите висине такси и неопходне обрасце за подношење одређеног захтева или погледајте најчешће постављана питања.</div>
-      <div class="tile-button hidden">ИДИ&nbsp;НА&nbsp;ИНФО</div>
+      <div class="tile-button hidden" onclick="$RGZ.navi(3);">ИДИ&nbsp;НА&nbsp;ИНФО</div>
     </div>
   </div>
-  <div id="foot">Copyright&nbsp;&copy;&nbsp;RGZ&nbsp;2017.&nbsp;All&nbsp;Rights&nbsp;Reserved.</div>
+  <div id="foot" onmouseover="$RGZ.footMouseOver();" onmouseout="$RGZ.footMouseOut();">
+    <div id="foot-title" class="hidden">РЕПУБЛИЧКИ&nbsp;ГЕОДЕТСКИ&nbsp;ЗАВОД</div>
+    <div id="foot-logo" class="hidden"></div>
+    <div id="foot-text-left" class="hidden">
+      <a href="http://www.rgz.gov.rs/" target="_blank">Сајт Републичког Геодетског Завода<i class="fa fa-link"></i></a>
+      <br><a href="http://katastar.rgz.gov.rs/KnWebPublic/PublicAccess.aspx" target="_blank">Катастар непокретности<i class="fa fa-link"></i></a>
+    </div>
+    <div id="foot-text-right" class="hidden">
+      <a href="https://goo.gl/maps/U2BfPquLxVw" target="_blank"><i class="fa fa-home"></i>Булевар Војводе Мишића 39, 11040 Београд, Србија</a>
+      <br><a href="tel:+381112652222"><i class="fa fa-phone"></i>+381 11 265 22 22</a>,<i></i><a href="tel:+381117152609"><i class="fa fa-fax"></i>+381 11 715 26 09</a>
+      <br><a href="mailto:office@rgz.gov.rs"><i class="fa fa-envelope"></i>office@rgz.gov.rs</a>
+    </div>
+    <div id="foot-copy">Copyright&nbsp;&copy;&nbsp;RGZ&nbsp;2017.&nbsp;All&nbsp;Rights&nbsp;Reserved.</div>
+  </div>
 </body>
 
 </html>
