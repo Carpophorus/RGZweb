@@ -117,7 +117,7 @@
     });
     $(".tile-title").css({
       "top": "0",
-      "color": "#E5EEC1",
+      "color": "#F4F8E6",
       "font-size": "3vh"
     });
     $(".tile-line").addClass("hidden").css({
@@ -159,7 +159,7 @@
       setTimeout(function() {
         $("#book-content>.content-box-content").css({
           "opacity": "1"
-        })
+        });
       }, 200);
     }, 2000); //this delay only simulating network response
   };
@@ -181,7 +181,7 @@
       setTimeout(function() {
         $("#stat-content>.content-box-content").css({
           "opacity": "1"
-        })
+        });
       }, 200);
     }, 2000); //this delay only simulating network response
   };
@@ -203,7 +203,7 @@
       setTimeout(function() {
         $("#info-content>.content-box-content").css({
           "opacity": "1"
-        })
+        });
       }, 200);
     }, 2000); //this delay only simulating network response
   };
@@ -308,7 +308,7 @@
         $(".tile-title").css({
           "opacity": "1",
           "top": "0",
-          "color": "#E5EEC1",
+          "color": "#F4F8E6",
           "font-size": "3vh",
           "letter-spacing": "2px",
           "-webkit-transition": "top 0.4s ease, font-size 0.4s ease, color 0.4s ease",
@@ -361,16 +361,6 @@
         $(".tile").removeAttr("onmouseover");
         $(".tile").removeAttr("onmouseout");
         setTimeout(function() {
-          $(".tile").css({
-            "max-width": "0"
-          });
-          $("#" + ((n == 1) ? "book" : ((n == 2) ? "stat" : "info"))).removeClass("col-6").addClass("col-12").css({
-            "max-width": "100%",
-            "background-color": "#E5EEC1"
-          });
-          $(".tile-title, .tile-line, .tile-text, .tile-button").addClass("gone");
-        }, 400);
-        setTimeout(function() {
           $("#navi-menu").css({
             "opacity": "1"
           });
@@ -382,6 +372,16 @@
       $("#navi-menu div span").removeClass("active");
       $("#navi-" + ((n == 1) ? "book" : ((n == 2) ? "stat" : "info")) + " span").addClass("active");
       RGZ.loadPage(n);
+      setTimeout(function() {
+        $(".tile").css({
+          "max-width": "0"
+        });
+        $("#" + ((n == 1) ? "book" : ((n == 2) ? "stat" : "info"))).removeClass("col-6").addClass("col-12").css({
+          "max-width": "100%",
+          "background-color": "#E5EEC1"
+        });
+        $(".tile-title, .tile-line, .tile-text, .tile-button").addClass("gone");
+      }, 400);
       console.log("❤");
     }
     if (history.state)
