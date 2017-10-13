@@ -26,35 +26,54 @@
       <span class="hidden-md-down">ИНФО-ЦЕНТАР&nbsp;РЕПУБЛИЧКОГ&nbsp;ГЕОДЕТСКОГ&nbsp;ЗАВОДА</span>
       <span class="hidden-lg-up">ИНФО-ЦЕНТАР&nbsp;РГЗ</span>
     </div>
-    <div id="navi-menu" class="row">
+    <div id="navi-menu" class="hidden-md-down row gone" style="opacity: 0">
       <div id="navi-home" class="col-3"><span onclick="$RGZ.navi(0);">ПОЧЕТНА</span></div>
       <div id="navi-book" class="col-3"><span onclick="$RGZ.navi(1);">ЗАКАЗИВАЊЕ</span></div>
       <div id="navi-stat" class="col-3"><span onclick="$RGZ.navi(2);">СТАЊЕ&nbsp;ПРЕДМЕТА</span></div>
       <div id="navi-info" class="col-3"><span onclick="$RGZ.navi(3);">ИНФОРМАЦИЈЕ</span></div>
     </div>
   </div>
+
   <div id="tiles" class="row">
-    <div id="book" class="tile col-4" onmouseover="RGZ.tileMouseOver(this);" onmouseout="RGZ.tileMouseOut();">
+
+    <div id="book" class="tile hidden-md-down col-4" onmouseover="RGZ.tileMouseOver(this);" onmouseout="RGZ.tileMouseOut();">
       <div class="tile-img"></div>
       <div class="tile-title">ЗАКАЗИВАЊЕ</div>
       <div class="tile-line hidden"></div>
       <div class="tile-text hidden">Закажите термин на шалтеру или у одређеним канцеларијама за предају захтева или предмета.</div>
       <div class="tile-button hidden" onclick="$RGZ.navi(1);">ЗАКАЖИ&nbsp;ТЕРМИН</div>
     </div>
-    <div id="stat" class="tile col-4" onmouseover="RGZ.tileMouseOver(this);" onmouseout="RGZ.tileMouseOut();">
+    <div id="stat" class="tile hidden-md-down col-4" onmouseover="RGZ.tileMouseOver(this);" onmouseout="RGZ.tileMouseOut();">
       <div class="tile-img"></div>
       <div class="tile-title">СТАЊЕ&nbsp;ПРЕДМЕТА</div>
       <div class="tile-line hidden"></div>
       <div class="tile-text hidden">Сазнајте у ком степену обраде је Ваш захтев или предмет &mdash; потребан Вам је само деловодни број.</div>
       <div class="tile-button hidden" onclick="$RGZ.navi(2);">ПОГЛЕДАЈ&nbsp;СТАЊЕ</div>
     </div>
-    <div id="info" class="tile col-4" onmouseover="RGZ.tileMouseOver(this);" onmouseout="RGZ.tileMouseOut();">
+    <div id="info" class="tile hidden-md-down col-4" onmouseover="RGZ.tileMouseOver(this);" onmouseout="RGZ.tileMouseOut();">
       <div class="tile-img"></div>
       <div class="tile-title">ИНФОРМАЦИЈЕ</div>
       <div class="tile-line hidden"></div>
       <div class="tile-text hidden">Пронађите висине такси и неопходне обрасце за подношење одређеног захтева или погледајте најчешће постављана питања.</div>
       <div class="tile-button hidden" onclick="$RGZ.navi(3);">ИДИ&nbsp;НА&nbsp;ИНФО</div>
     </div>
+
+    <div id="book-mobile" class="tile-mobile hidden-lg-up col-12">
+      <div class="tile-img"></div>
+      <div class="tile-title">ЗАКАЗИВАЊЕ</div>
+      <div class="tile-line hidden"></div>
+      <div class="tile-text hidden">Закажите термин на шалтеру или у одређеним канцеларијама за предају захтева или предмета.</div>
+      <div class="tile-button hidden" onclick="$RGZ.navi(1);">ЗАКАЖИ&nbsp;ТЕРМИН</div>
+    </div>
+    <div id="stat-mobile" class="tile-mobile hidden-lg-up col-12">
+      <div class="tile-img"></div>
+      <div class="tile-title">СТАЊЕ&nbsp;ПРЕДМЕТА</div>
+      <div class="tile-line hidden"></div>
+      <div class="tile-text hidden">Сазнајте у ком степену обраде је Ваш захтев или предмет &mdash; потребан Вам је само деловодни број.</div>
+      <div class="tile-button hidden" onclick="$RGZ.navi(2);">ПОГЛЕДАЈ&nbsp;СТАЊЕ</div>
+    </div>
+    <div id="info-mobile" class="tile-mobile hidden-lg-up col-12"></div>
+
     <div id="book-content" class="content-box col-12 hidden">
       <div class="content-box-img"></div>
       <div class="content-box-loader">
@@ -76,8 +95,10 @@
       </div>
       <div class="content-box-content"></div>
     </div>
+
   </div>
-  <div id="foot" onmouseover="$RGZ.footMouseOver();" onmouseout="$RGZ.footMouseOut();">
+
+  <div id="foot" onmouseover="$RGZ.footMouseOver();" onmouseout="$RGZ.footMouseOut();" class="hidden-md-down">
     <div id="foot-title" class="hidden">РЕПУБЛИЧКИ&nbsp;ГЕОДЕТСКИ&nbsp;ЗАВОД</div>
     <div id="foot-logo" class="hidden"></div>
     <div id="foot-text-left" class="hidden">
@@ -91,6 +112,7 @@
     </div>
     <div id="foot-copy">Copyright&nbsp;&copy;&nbsp;RGZ&nbsp;2017.&nbsp;All&nbsp;Rights&nbsp;Reserved.</div>
   </div>
+  <div id="foot-mobile" class="hidden-lg-up"></div>
 </body>
 
 </html>

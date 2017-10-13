@@ -31,6 +31,7 @@
           $("#navi-landing").css({
             "opacity": "0"
           });
+          $("#navi-menu").removeClass("gone");
           setTimeout(function() {
             $("#navi-menu").css({
               "opacity": "1"
@@ -73,6 +74,7 @@
           $("#navi-landing").css({
             "opacity": "0"
           });
+          $("#navi-menu").removeClass("gone");
           setTimeout(function() {
             $("#navi-menu").css({
               "opacity": "1"
@@ -301,6 +303,7 @@
         $("#navi-landing").css({
           "opacity": "1"
         });
+        $("#navi-menu").addClass("gone");
       }, 600);
       $(".tile-img").removeClass("gone");
       setTimeout(function() {
@@ -360,6 +363,7 @@
         });
         $(".tile").removeAttr("onmouseover");
         $(".tile").removeAttr("onmouseout");
+        $("#navi-menu").removeClass("gone");
         setTimeout(function() {
           $("#navi-menu").css({
             "opacity": "1"
