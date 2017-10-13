@@ -4,8 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9, user-scalable=no">
-  <title>РГЗ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>ИНФО-ЦЕНТАР&nbsp;РГЗ</title>
 
   <link rel="stylesheet" href="css/font-awesome.min.css">
   <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -22,7 +22,7 @@
 
 <body>
   <div id="navi">
-    <div id="navi-landing">ПОМОЋНИ&nbsp;ЦЕНТАР&nbsp;РЕПУБЛИЧКОГ&nbsp;ГЕОДЕТСКОГ&nbsp;ЗАВОДА</div>
+    <div id="navi-landing">ИНФО-ЦЕНТАР&nbsp;РЕПУБЛИЧКОГ&nbsp;ГЕОДЕТСКОГ&nbsp;ЗАВОДА</div>
     <div id="navi-menu" class="row">
       <div id="navi-home" class="col-3"><span onclick="$RGZ.navi(0);">ПОЧЕТНА</span></div>
       <div id="navi-book" class="col-3"><span onclick="$RGZ.navi(1);">ЗАКАЗИВАЊЕ</span></div>
@@ -52,6 +52,27 @@
       <div class="tile-text hidden">Пронађите висине такси и неопходне обрасце за подношење одређеног захтева или погледајте најчешће постављана питања.</div>
       <div class="tile-button hidden" onclick="$RGZ.navi(3);">ИДИ&nbsp;НА&nbsp;ИНФО</div>
     </div>
+    <div id="book-content" class="content-box col-12 hidden">
+      <div class="content-box-img"></div>
+      <div class="content-box-loader">
+        <div class="spinner"></div>
+      </div>
+      <div class="content-box-content"></div>
+    </div>
+    <div id="stat-content" class="content-box col-12 hidden">
+      <div class="content-box-img"></div>
+      <div class="content-box-loader">
+        <div class="spinner"></div>
+      </div>
+      <div class="content-box-content"></div>
+    </div>
+    <div id="info-content" class="content-box col-12 hidden">
+      <div class="content-box-img"></div>
+      <div class="content-box-loader">
+        <div class="spinner"></div>
+      </div>
+      <div class="content-box-content"></div>
+    </div>
   </div>
   <div id="foot" onmouseover="$RGZ.footMouseOver();" onmouseout="$RGZ.footMouseOut();">
     <div id="foot-title" class="hidden">РЕПУБЛИЧКИ&nbsp;ГЕОДЕТСКИ&nbsp;ЗАВОД</div>
@@ -61,7 +82,7 @@
       <br><a href="http://katastar.rgz.gov.rs/KnWebPublic/PublicAccess.aspx" target="_blank">Катастар непокретности<i class="fa fa-link"></i></a>
     </div>
     <div id="foot-text-right" class="hidden">
-      <a href="https://goo.gl/maps/U2BfPquLxVw" target="_blank"><i class="fa fa-home"></i>Булевар Војводе Мишића 39, 11040 Београд, Србија</a>
+      <a href="https://goo.gl/maps/U2BfPquLxVw" target="_blank"><i class="fa fa-map-marker"></i>Булевар Војводе Мишића 39, 11040 Београд, Србија</a>
       <br><a href="tel:+381112652222"><i class="fa fa-phone"></i>+381 11 265 22 22</a>,<i></i><a href="tel:+381117152609"><i class="fa fa-fax"></i>+381 11 715 26 09</a>
       <br><a href="mailto:office@rgz.gov.rs"><i class="fa fa-envelope"></i>office@rgz.gov.rs</a>
     </div>
