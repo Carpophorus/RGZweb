@@ -93,38 +93,47 @@ a, a:hover, a:focus, a:visited {
   transition: max-width 0.4s ease, flex 0.4s ease, background-color 0.4s ease;
 }
 
-#book {
+#tiles>.tile-mobile {
+  height: 28vh;
+  max-height: 28vh;
+  position: relative;
+  -webkit-transition: max-height 0.4s ease, height 0.4s ease, background-color 0.4s ease;
+  -moz-transition: max-height 0.4s ease, height 0.4s ease, background-color 0.4s ease;
+  transition: max-height 0.4s ease, height 0.4s ease, background-color 0.4s ease;
+}
+
+#book, #book-mobile {
   background-color: #589662;
 }
 
-#stat {
+#stat, #stat-mobile {
   background-color: #3EACA8;
 }
 
-#info {
+#info, #info-mobile {
   background-color: #547A82;
 }
 
-.tile>.tile-img {
+.tile>.tile-img, .tile-mobile>.tile-img {
   opacity: 0.4;
   position: absolute;
   width: inherit;
   height: 100%;
 }
 
-#book>.tile-img {
+#book>.tile-img, #book-mobile>.tile-img {
   background: url('../img/clock.jpg') no-repeat;
   background-size: cover;
   background-position: center;
 }
 
-#stat>.tile-img {
+#stat>.tile-img, #stat-mobile>.tile-img {
   background: url('../img/archive.jpg') no-repeat;
   background-size: cover;
   background-position: center;
 }
 
-#info>.tile-img {
+#info>.tile-img, #info-mobile>.tile-img {
   background: url('../img/info.jpg') no-repeat;
   background-size: cover;
   background-position: center;
@@ -140,6 +149,24 @@ a, a:hover, a:focus, a:visited {
   -webkit-transition: height 0.4s ease;
   -moz-transition: height 0.4s ease;
   transition: height 0.4s ease;
+}
+
+#foot-mobile {
+  background-color: #5A5050;
+  height: 8vh;
+  max-height: 8vh;
+  color: #F4F8E6;
+  -webkit-transition: height 0.4s ease, max-height 0.4s ease;
+  -moz-transition: height 0.4s ease, max-height 0.4s ease;
+  transition: height 0.4s ease, max-height 0.4s ease;
+}
+
+#foot-mobile-title {
+  width: 100%;
+  text-align: center;
+  font-family: 'Russo One', sans-serif;
+  font-size: 3vh;
+  line-height: 8vh;
 }
 
 #foot-title {
@@ -236,6 +263,22 @@ a, a:hover, a:focus, a:visited {
   transition: top 0.4s ease, font-size 0.4s ease, color 0.4s ease;
 }
 
+.tile-mobile>.tile-title {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  font-family: 'Russo One', sans-serif;
+  line-height: 8vh;
+  text-align: center;
+  top: 12.5vh;
+  color: #F4F8E6;
+  font-size: 3vh;
+  letter-spacing: 2px;
+  -webkit-transition: top 0.4s ease, font-size 0.4s ease, color 0.4s ease;
+  -moz-transition: top 0.4s ease, font-size 0.4s ease, color 0.4s ease;
+  transition: top 0.4s ease, font-size 0.4s ease, color 0.4s ease;
+}
+
 .tile-line {
   width: 0;
   height: 0.5vh;
@@ -247,6 +290,14 @@ a, a:hover, a:focus, a:visited {
   -webkit-transition: width 0.5s ease 0.4s;
   -moz-transition: width 0.5s ease 0.4s;
   transition: width 0.5s ease 0.4s;
+}
+
+.tile-mobile>.tile-line {
+  top: 15vh;
+  /*left: 0;
+  height: 1vh;
+  right: inherit;
+  margin: inherit;*/
 }
 
 #book>.tile-line {
@@ -273,6 +324,10 @@ a, a:hover, a:focus, a:visited {
   transition: top 0.6s ease 0.2s, opacity 0.6s ease 0.2s;
 }
 
+.tile-mobile>.tile-text {
+  top: 35vh;
+}
+
 .tile-button {
   position: absolute;
   top: 59vh;
@@ -290,6 +345,23 @@ a, a:hover, a:focus, a:visited {
   -webkit-transition: top 0.6s ease 0.4s, opacity 0.6s ease 0.4s, background-color 0.4s ease, color 0.4s ease;
   -moz-transition: top 0.6s ease 0.4s, opacity 0.6s ease 0.4s, background-color 0.4s ease, color 0.4s ease;
   transition: top 0.6s ease 0.4s, opacity 0.6s ease 0.4s, background-color 0.4s ease, color 0.4s ease;
+}
+
+.tile-mobile>.tile-button {
+  top: 55vh;
+  color: #F4F8E6;
+}
+
+#book-mobile>.tile-button {
+  background-color: #589662;
+}
+
+#stat-mobile>.tile-button {
+  background-color: #3EACA8;
+}
+
+#info-mobile>.tile-button {
+  background-color: #547A82;
 }
 
 #book>.tile-button {
@@ -432,6 +504,20 @@ a, a:hover, a:focus, a:visited {
     transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
     -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
   }
+}
+
+@media (max-width: 990.5px) {
+  #navi {
+    height: 8vh;
+    line-height: 8vh;
+  }
+  #tiles {
+    height: 92vh;
+  }
+}
+
+#accordion {
+  padding: 10%;
 }
 
 @media (min-width: 1px) {

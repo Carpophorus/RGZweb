@@ -11,34 +11,53 @@
   document.addEventListener("DOMContentLoaded", function(event) {
     if (history.state != null) {
       if (history.state.state != null) {
-        switch (history.state.state) {
-          case 0:
-            RGZ.navi(0);
-            break;
-          case 1:
-            RGZ.navi(1);
-            break;
-          case 2:
-            RGZ.navi(2);
-            break;
-          case 3:
-            RGZ.navi(3);
-            break;
-          default:
-            break;
-        }
-        if (history.state.state > 0) {
-          $("#navi-landing").css({
-            "opacity": "0"
-          });
-          $("#navi-menu").removeClass("gone");
-          setTimeout(function() {
-            $("#navi-menu").css({
-              "opacity": "1"
+        if (window.innerWidth > 990.5) {
+          switch (history.state.state) {
+            case 0:
+              RGZ.navi(0);
+              break;
+            case 1:
+              RGZ.navi(1);
+              break;
+            case 2:
+              RGZ.navi(2);
+              break;
+            case 3:
+              RGZ.navi(3);
+              break;
+            default:
+              break;
+          }
+          if (history.state.state > 0) {
+            $("#navi-landing").css({
+              "opacity": "0"
             });
-          }, 600);
-          $("#navi-menu div span").removeClass("active");
-          $("#navi-" + ((history.state.state == 1) ? "book" : ((history.state.state == 2) ? "stat" : "info")) + " span").addClass("active");
+            $("#navi-menu").removeClass("gone");
+            setTimeout(function() {
+              $("#navi-menu").css({
+                "opacity": "1"
+              });
+            }, 600);
+            $("#navi-menu div span").removeClass("active");
+            $("#navi-" + ((history.state.state == 1) ? "book" : ((history.state.state == 2) ? "stat" : "info")) + " span").addClass("active");
+          }
+        } else {
+          switch (history.state.state) {
+            case 0:
+              RGZ.naviMobile(0);
+              break;
+            case 1:
+              RGZ.naviMobile(1);
+              break;
+            case 2:
+              RGZ.naviMobile(2);
+              break;
+            case 3:
+              RGZ.naviMobile(3);
+              break;
+            default:
+              break;
+          }
         }
       }
     } else {
@@ -111,6 +130,108 @@
       "top": "54vh",
       "opacity": "1"
     });
+  };
+
+  RGZ.tileMobileClick = function(e) {
+    if (!$(e).hasClass("clicked")) {
+      $(".tile-mobile, .foot-mobile").css({
+        "height": "8vh",
+        "max-height": "8vh"
+      });
+      $(".tile-mobile>.tile-title").css({
+        "top": "0",
+        "color": "#F4F8E6"
+      });
+      $("#book-mobile").css({
+        "background-color": "#589662"
+      });
+      $("#stat-mobile").css({
+        "background-color": "#3EACA8"
+      });
+      $("#info-mobile").css({
+        "background-color": "#547A82"
+      });
+
+      $(".tile-line, .tile-text, .tile-button").addClass("hidden");
+      $(".tile-line").css({
+        "width": "60%"
+      });
+      $(".tile-text").css({
+        "top": "35vh",
+        "opacity": "0"
+      });
+      $(".tile-button").css({
+        "top": "55vh",
+        "opacity": "0"
+      });
+
+      $(e).css({
+        "height": "68vh",
+        "max-height": "68vh"
+      });
+
+      $(e).find(".tile-title").css({
+        "top": "5vh",
+        "color": "#333",
+        "font-size": "3.3vh"
+      });
+      $(e).find(".tile-line").removeClass("hidden").css({
+        "width": "60%"
+      });
+      $(e).find(".tile-text").removeClass("hidden").css({
+        "top": "30vh",
+        "opacity": "1"
+      });
+      $(e).find(".tile-button").removeClass("hidden").css({
+        "top": "50vh",
+        "opacity": "1"
+      });
+
+      if (!$(e).hasClass("foot-mobile")) $(e).css({
+        "background-color": "#E5EEC1"
+      });
+
+      $(".tile-mobile, .foot-mobile").removeClass("clicked");
+      $(e).addClass("clicked");
+    } else {
+      $(".foot-mobile").css({
+        "height": "8vh",
+        "max-height": "8vh"
+      });
+      $(".tile-mobile").css({
+        "height": "28vh",
+        "max-height": "28vh"
+      });
+      $("#book-mobile").css({
+        "background-color": "#589662"
+      });
+      $("#stat-mobile").css({
+        "background-color": "#3EACA8"
+      });
+      $("#info-mobile").css({
+        "background-color": "#547A82"
+      });
+
+      $(".tile-line, .tile-text, .tile-button").addClass("hidden");
+      $(".tile-line").css({
+        "width": "60%"
+      });
+      $(".tile-text").css({
+        "top": "35vh",
+        "opacity": "0"
+      });
+      $(".tile-button").css({
+        "top": "55vh",
+        "opacity": "0"
+      });
+
+      $(".tile-title").css({
+        "top": "12.5vh",
+        "font-size": "3vh",
+        "color": "#F4F8E6"
+      });
+      $(".tile-mobile, .foot-mobile").removeClass("clicked");
+    }
   };
 
   RGZ.tileMouseOut = function() {
@@ -197,7 +318,51 @@
     });
     setTimeout(function() {
       insertHtml("#info-content>.content-box-content", `
-        <div style="padding: 10vh; text-align: center">info content</div>
+      <div id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="card">
+          <div class="card-header" role="tab" id="headingOne">
+            <h5 class="mb-0">
+              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                Pitanje 1
+              </a>
+            </h5>
+          </div>
+
+          <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+            <div class="card-block">
+              odgovor 1 odgovor 1 odgovor 1 odgovor 1 odgovor 1 odgovor 1 odgovor 1 odgovor 1 odgovor 1 odgovor 1 odgovor 1 odgovor 1 odgovor 1 odgovor 1 odgovor 1 odgovor 1 odgovor 1 odgovor 1 odgovor 1 odgovor 1 odgovor 1 odgovor 1 odgovor 1 odgovor 1 odgovor 1 odgovor 1 odgovor 1 odgovor 1 odgovor 1 odgovor 1 odgovor 1 odgovor 1 odgovor 1 odgovor 1 odgovor 1 odgovor 1 odgovor 1 odgovor 1 odgovor 1 odgovor 1 odgovor 1
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" role="tab" id="headingTwo">
+            <h5 class="mb-0">
+              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Pitanje 2
+              </a>
+            </h5>
+          </div>
+          <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="card-block">
+              odgovor 2 odgovor 2 odgovor 2 odgovor 2 odgovor 2 odgovor 2 odgovor 2 odgovor 2 odgovor 2 odgovor 2 odgovor 2 odgovor 2 odgovor 2 odgovor 2 odgovor 2 odgovor 2 odgovor 2 odgovor 2 odgovor 2 odgovor 2 odgovor 2 odgovor 2 odgovor 2 odgovor 2 odgovor 2 odgovor 2 odgovor 2 odgovor 2 odgovor 2
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" role="tab" id="headingThree">
+            <h5 class="mb-0">
+              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Pitanje 3
+              </a>
+            </h5>
+          </div>
+          <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+            <div class="card-block">
+              odgovor 3 odgovor 3 odgovor 3 odgovor 3 odgovor 3 odgovor 3 odgovor 3 odgovor 3 odgovor 3 odgovor 3 odgovor 3 odgovor 3 odgovor 3 odgovor 3 odgovor 3 odgovor 3 odgovor 3
+            </div>
+          </div>
+        </div>
+        </div>
       `);
       $(".content-box-loader").css({
         "opacity": "0"
@@ -310,7 +475,7 @@
         $(".tile>div").removeClass("gone");
         $(".tile-title").css({
           "opacity": "1",
-          "top": "0",
+          "top": (window.innerWidth > 990.5) ? "0" : "12.5vh",
           "color": "#F4F8E6",
           "font-size": "3vh",
           "letter-spacing": "2px",
@@ -386,8 +551,15 @@
         });
         $(".tile-title, .tile-line, .tile-text, .tile-button").addClass("gone");
       }, 400);
-      console.log("❤");
     }
+    if (history.state)
+      if (history.state.state != n) history.pushState({
+        state: n
+      }, null, null);
+  };
+
+  RGZ.naviMobile = function(n) {
+    RGZ.loadPage(n); //TODO fix this
     if (history.state)
       if (history.state.state != n) history.pushState({
         state: n

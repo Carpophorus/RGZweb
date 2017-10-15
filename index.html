@@ -58,21 +58,30 @@
       <div class="tile-button hidden" onclick="$RGZ.navi(3);">ИДИ&nbsp;НА&nbsp;ИНФО</div>
     </div>
 
-    <div id="book-mobile" class="tile-mobile hidden-lg-up col-12">
+    <div id="book-mobile" class="tile-mobile hidden-lg-up col-12" onclick="$RGZ.tileMobileClick(this);">
       <div class="tile-img"></div>
       <div class="tile-title">ЗАКАЗИВАЊЕ</div>
       <div class="tile-line hidden"></div>
       <div class="tile-text hidden">Закажите термин на шалтеру или у одређеним канцеларијама за предају захтева или предмета.</div>
-      <div class="tile-button hidden" onclick="$RGZ.navi(1);">ЗАКАЖИ&nbsp;ТЕРМИН</div>
+      <div class="tile-button hidden" onclick="$RGZ.naviMobile(1);">ЗАКАЖИ&nbsp;ТЕРМИН</div>
     </div>
-    <div id="stat-mobile" class="tile-mobile hidden-lg-up col-12">
+    <div id="stat-mobile" class="tile-mobile hidden-lg-up col-12" onclick="$RGZ.tileMobileClick(this);">
       <div class="tile-img"></div>
       <div class="tile-title">СТАЊЕ&nbsp;ПРЕДМЕТА</div>
       <div class="tile-line hidden"></div>
       <div class="tile-text hidden">Сазнајте у ком степену обраде је Ваш захтев или предмет &mdash; потребан Вам је само деловодни број.</div>
-      <div class="tile-button hidden" onclick="$RGZ.navi(2);">ПОГЛЕДАЈ&nbsp;СТАЊЕ</div>
+      <div class="tile-button hidden" onclick="$RGZ.naviMobile(2);">ПОГЛЕДАЈ&nbsp;СТАЊЕ</div>
     </div>
-    <div id="info-mobile" class="tile-mobile hidden-lg-up col-12"></div>
+    <div id="info-mobile" class="tile-mobile hidden-lg-up col-12" onclick="$RGZ.tileMobileClick(this);">
+      <div class="tile-img"></div>
+      <div class="tile-title">ИНФОРМАЦИЈЕ</div>
+      <div class="tile-line hidden"></div>
+      <div class="tile-text hidden">Пронађите висине такси и неопходне обрасце за подношење одређеног захтева или погледајте најчешће постављана питања.</div>
+      <div class="tile-button hidden" onclick="$RGZ.naviMobile(3);">ИДИ&nbsp;НА&nbsp;ИНФО</div>
+    </div>
+    <div id="foot-mobile" class="foot-mobile hidden-lg-up col-12" onclick="$RGZ.tileMobileClick(this);">
+      <div id="foot-mobile-title">КОНТАКТ</div>
+    </div>
 
     <div id="book-content" class="content-box col-12 hidden">
       <div class="content-box-img"></div>
