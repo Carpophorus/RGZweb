@@ -73,34 +73,53 @@
   window.onpopstate = function(event) {
     if (event.state != null) {
       if (event.state.state != null) {
-        switch (event.state.state) {
-          case 0:
-            RGZ.navi(0);
-            break;
-          case 1:
-            RGZ.navi(1);
-            break;
-          case 2:
-            RGZ.navi(2);
-            break;
-          case 3:
-            RGZ.navi(3);
-            break;
-          default:
-            break;
-        }
-        if (event.state.state > 0) {
-          $("#navi-landing").css({
-            "opacity": "0"
-          });
-          $("#navi-menu").removeClass("gone");
-          setTimeout(function() {
-            $("#navi-menu").css({
-              "opacity": "1"
+        if (window.innerWidth > 990.5) {
+          switch (event.state.state) {
+            case 0:
+              RGZ.navi(0);
+              break;
+            case 1:
+              RGZ.navi(1);
+              break;
+            case 2:
+              RGZ.navi(2);
+              break;
+            case 3:
+              RGZ.navi(3);
+              break;
+            default:
+              break;
+          }
+          if (event.state.state > 0) {
+            $("#navi-landing").css({
+              "opacity": "0"
             });
-          }, 600);
-          $("#navi-menu div span").removeClass("active");
-          $("#navi-" + ((event.state.state == 1) ? "book" : ((event.state.state == 2) ? "stat" : "info")) + " span").addClass("active");
+            $("#navi-menu").removeClass("gone");
+            setTimeout(function() {
+              $("#navi-menu").css({
+                "opacity": "1"
+              });
+            }, 600);
+            $("#navi-menu div span").removeClass("active");
+            $("#navi-" + ((event.state.state == 1) ? "book" : ((event.state.state == 2) ? "stat" : "info")) + " span").addClass("active");
+          }
+        } else {
+          switch (history.state.state) {
+            case 0:
+              RGZ.naviMobile(0);
+              break;
+            case 1:
+              RGZ.naviMobile(1);
+              break;
+            case 2:
+              RGZ.naviMobile(2);
+              break;
+            case 3:
+              RGZ.naviMobile(3);
+              break;
+            default:
+              break;
+          }
         }
       }
     }
@@ -138,7 +157,7 @@
         "height": "8vh",
         "max-height": "8vh"
       });
-      $(".tile-mobile>.tile-title").css({
+      $(".tile-mobile>.tile-mobile-title").css({
         "top": "0",
         "color": "#F4F8E6"
       });
@@ -152,16 +171,16 @@
         "background-color": "#547A82"
       });
 
-      $(".tile-line, .tile-text, .tile-button").addClass("hidden");
-      $(".tile-line").css({
-        "width": "60%"
+      $(".tile-mobile-line, .tile-mobile-text, .tile-mobile-button").addClass("hidden");
+      $(".tile-mobile-line").css({
+        "width": "0"
       });
-      $(".tile-text").css({
+      $(".tile-mobile-text").css({
         "top": "35vh",
         "opacity": "0"
       });
-      $(".tile-button").css({
-        "top": "55vh",
+      $(".tile-mobile-button").css({
+        "top": "58vh",
         "opacity": "0"
       });
 
@@ -170,20 +189,20 @@
         "max-height": "68vh"
       });
 
-      $(e).find(".tile-title").css({
-        "top": "5vh",
+      $(e).find(".tile-mobile-title").css({
+        "top": "12vh",
         "color": "#333",
         "font-size": "3.3vh"
       });
-      $(e).find(".tile-line").removeClass("hidden").css({
-        "width": "60%"
+      $(e).find(".tile-mobile-line").removeClass("hidden").css({
+        "width": "90%"
       });
-      $(e).find(".tile-text").removeClass("hidden").css({
+      $(e).find(".tile-mobile-text").removeClass("hidden").css({
         "top": "30vh",
         "opacity": "1"
       });
-      $(e).find(".tile-button").removeClass("hidden").css({
-        "top": "50vh",
+      $(e).find(".tile-mobile-button").removeClass("hidden").css({
+        "top": "53vh",
         "opacity": "1"
       });
 
@@ -212,21 +231,21 @@
         "background-color": "#547A82"
       });
 
-      $(".tile-line, .tile-text, .tile-button").addClass("hidden");
-      $(".tile-line").css({
-        "width": "60%"
+      $(".tile-mobile-line, .tile-mobile-text, .tile-mobile-button").addClass("hidden");
+      $(".tile-mobile-line").css({
+        "width": "0"
       });
-      $(".tile-text").css({
+      $(".tile-mobile-text").css({
         "top": "35vh",
         "opacity": "0"
       });
-      $(".tile-button").css({
-        "top": "55vh",
+      $(".tile-mobile-button").css({
+        "top": "58vh",
         "opacity": "0"
       });
 
-      $(".tile-title").css({
-        "top": "12.5vh",
+      $(".tile-mobile-title").css({
+        "top": "11vh",
         "font-size": "3vh",
         "color": "#F4F8E6"
       });
@@ -475,7 +494,7 @@
         $(".tile>div").removeClass("gone");
         $(".tile-title").css({
           "opacity": "1",
-          "top": (window.innerWidth > 990.5) ? "0" : "12.5vh",
+          "top": "0",
           "color": "#F4F8E6",
           "font-size": "3vh",
           "letter-spacing": "2px",

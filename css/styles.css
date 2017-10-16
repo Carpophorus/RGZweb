@@ -96,7 +96,6 @@ a, a:hover, a:focus, a:visited {
 #tiles>.tile-mobile {
   height: 28vh;
   max-height: 28vh;
-  position: relative;
   -webkit-transition: max-height 0.4s ease, height 0.4s ease, background-color 0.4s ease;
   -moz-transition: max-height 0.4s ease, height 0.4s ease, background-color 0.4s ease;
   transition: max-height 0.4s ease, height 0.4s ease, background-color 0.4s ease;
@@ -114,26 +113,26 @@ a, a:hover, a:focus, a:visited {
   background-color: #547A82;
 }
 
-.tile>.tile-img, .tile-mobile>.tile-img {
+.tile>.tile-img, .tile-mobile>.tile-mobile-img {
   opacity: 0.4;
   position: absolute;
   width: inherit;
   height: 100%;
 }
 
-#book>.tile-img, #book-mobile>.tile-img {
+#book>.tile-img, #book-mobile>.tile-mobile-img {
   background: url('../img/clock.jpg') no-repeat;
   background-size: cover;
   background-position: center;
 }
 
-#stat>.tile-img, #stat-mobile>.tile-img {
+#stat>.tile-img, #stat-mobile>.tile-mobile-img {
   background: url('../img/archive.jpg') no-repeat;
   background-size: cover;
   background-position: center;
 }
 
-#info>.tile-img, #info-mobile>.tile-img {
+#info>.tile-img, #info-mobile>.tile-mobile-img {
   background: url('../img/info.jpg') no-repeat;
   background-size: cover;
   background-position: center;
@@ -250,7 +249,6 @@ a, a:hover, a:focus, a:visited {
 .tile-title {
   position: absolute;
   width: 100%;
-  height: 100%;
   font-family: 'Russo One', sans-serif;
   line-height: 90vh;
   text-align: center;
@@ -263,14 +261,14 @@ a, a:hover, a:focus, a:visited {
   transition: top 0.4s ease, font-size 0.4s ease, color 0.4s ease;
 }
 
-.tile-mobile>.tile-title {
+.tile-mobile-title {
   position: absolute;
-  width: 100%;
-  height: 100%;
   font-family: 'Russo One', sans-serif;
   line-height: 8vh;
   text-align: center;
-  top: 12.5vh;
+  top: 11vh;
+  width: 100%;
+  padding: 0 10%;
   color: #F4F8E6;
   font-size: 3vh;
   letter-spacing: 2px;
@@ -292,23 +290,25 @@ a, a:hover, a:focus, a:visited {
   transition: width 0.5s ease 0.4s;
 }
 
-.tile-mobile>.tile-line {
-  top: 15vh;
-  /*left: 0;
+.tile-mobile-line {
+  width: 0;
   height: 1vh;
-  right: inherit;
-  margin: inherit;*/
+  position: absolute;
+  top: 20vh;
+  -webkit-transition: width 0.8s ease 0.4s;
+  -moz-transition: width 0.8s ease 0.4s;
+  transition: width 0.8s ease 0.4s;
 }
 
-#book>.tile-line {
+#book>.tile-line, #book-mobile>.tile-mobile-line {
   background-color: #589662;
 }
 
-#stat>.tile-line {
+#stat>.tile-line, #stat-mobile>.tile-mobile-line {
   background-color: #3EACA8;
 }
 
-#info>.tile-line {
+#info>.tile-line, #info-mobile>.tile-mobile-line {
   background-color: #547A82;
 }
 
@@ -324,8 +324,16 @@ a, a:hover, a:focus, a:visited {
   transition: top 0.6s ease 0.2s, opacity 0.6s ease 0.2s;
 }
 
-.tile-mobile>.tile-text {
+.tile-mobile-text {
+  position: absolute;
   top: 35vh;
+  opacity: 0;
+  padding-left: 20%;
+  padding-right: 10%;
+  text-align: right;
+  -webkit-transition: top 0.6s ease 0.2s, opacity 0.6s ease 0.2s;
+  -moz-transition: top 0.6s ease 0.2s, opacity 0.6s ease 0.2s;
+  transition: top 0.6s ease 0.2s, opacity 0.6s ease 0.2s;
 }
 
 .tile-button {
@@ -347,20 +355,33 @@ a, a:hover, a:focus, a:visited {
   transition: top 0.6s ease 0.4s, opacity 0.6s ease 0.4s, background-color 0.4s ease, color 0.4s ease;
 }
 
-.tile-mobile>.tile-button {
-  top: 55vh;
+.tile-mobile-button {
+  position: absolute;
+  top: 58vh;
+  right: 10%;
+  width: 50%;
+  height: 7vh;
+  line-height: 7vh;
+  font-size: 2.5vh;
+  font-family: 'Russo One', sans-serif;
   color: #F4F8E6;
+  text-align: center;
+  background-color: none;
+  opacity: 0;
+  -webkit-transition: top 0.6s ease 0.4s, opacity 0.6s ease 0.4s, background-color 0.4s ease, color 0.4s ease;
+  -moz-transition: top 0.6s ease 0.4s, opacity 0.6s ease 0.4s, background-color 0.4s ease, color 0.4s ease;
+  transition: top 0.6s ease 0.4s, opacity 0.6s ease 0.4s, background-color 0.4s ease, color 0.4s ease;
 }
 
-#book-mobile>.tile-button {
+#book-mobile>.tile-mobile-button {
   background-color: #589662;
 }
 
-#stat-mobile>.tile-button {
+#stat-mobile>.tile-mobile-button {
   background-color: #3EACA8;
 }
 
-#info-mobile>.tile-button {
+#info-mobile>.tile-mobile-button {
   background-color: #547A82;
 }
 
@@ -464,6 +485,7 @@ a, a:hover, a:focus, a:visited {
   bottom: 0;
   margin: auto;
   -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
+  -moz-animation: sk-rotateplane 1.2s infinite ease-in-out;
   animation: sk-rotateplane 1.2s infinite ease-in-out;
 }
 
@@ -488,6 +510,18 @@ a, a:hover, a:focus, a:visited {
   }
   100% {
     -webkit-transform: perspective(120px) rotateY(180deg) rotateX(180deg)
+  }
+}
+
+@-moz-keyframes sk-rotateplane {
+  0% {
+    -moz-transform: perspective(120px)
+  }
+  50% {
+    -moz-transform: perspective(120px) rotateY(180deg)
+  }
+  100% {
+    -moz-transform: perspective(120px) rotateY(180deg) rotateX(180deg)
   }
 }
 
