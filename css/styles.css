@@ -232,6 +232,10 @@ a, a:hover, a:focus, a:visited {
   padding-right: 1.5vh;
 }
 
+#foot-mobile i {
+  padding-right: 1vh;
+}
+
 #foot-copy {
   height: 3vh;
   line-height: 3vh;
@@ -244,6 +248,28 @@ a, a:hover, a:focus, a:visited {
 
 #foot a:hover {
   color: #3EACA8;
+}
+
+#foot-mobile-container {
+  margin: 10vh 3vh 3vh 3vh;
+}
+
+#foot-mobile a {
+  background-color: #F4F8E6;
+  color: #5A5050;
+  padding: 2vh 1vh;
+  margin-bottom: 3vh;
+  text-align: center;
+  font-size: 2vh;
+  width: 100%;
+}
+
+.foot-mobile-button-left {
+  padding-right: 1.5vh!important;
+}
+
+.foot-mobile-button-right {
+  padding-left: 1.5vh!important;
 }
 
 .tile-title {
