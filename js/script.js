@@ -206,9 +206,40 @@
         "opacity": "1"
       });
 
-      if (!$(e).hasClass("foot-mobile")) $(e).css({
-        "background-color": "#E5EEC1"
+      $("#foot-mobile-logo, #foot-mobile-name").addClass("hidden").css({
+        "opacity": "0",
+        "top": "14.5vh",
+        "-webkit-transition": "opacity 0.1s ease, top 0.1s ease",
+        "-moz-transition": "opacity 0.1s ease, top 0.1s ease",
+        "transition": "opacity 0.1s ease, top 0.1s ease"
       });
+      $("#foot-mobile-container").addClass("hidden").css({
+        "opacity": "0",
+        "top": "28vh",
+        "-webkit-transition": "opacity 0.1s ease, top 0.1s ease",
+        "-moz-transition": "opacity 0.1s ease, top 0.1s ease",
+        "transition": "opacity 0.1s ease, top 0.1s ease"
+      });
+      if (!$(e).hasClass("foot-mobile"))
+        $(e).css({
+          "background-color": "#E5EEC1"
+        });
+      else {
+        $("#foot-mobile-logo, #foot-mobile-name").removeClass("hidden").css({
+          "opacity": "1",
+          "top": "9.5vh",
+          "-webkit-transition": "opacity 0.6s ease 0.3s, top 0.6s ease 0.3s",
+          "-moz-transition": "opacity 0.6s ease 0.3s, top 0.6s ease 0.3s",
+          "transition": "opacity 0.6s ease 0.3s, top 0.6s ease 0.3s"
+        });
+        $("#foot-mobile-container").removeClass("hidden").css({
+          "opacity": "1",
+          "top": "23vh",
+          "-webkit-transition": "opacity 0.6s ease 0.5s, top 0.6s ease 0.5s",
+          "-moz-transition": "opacity 0.6s ease 0.5s, top 0.6s ease 0.5s",
+          "transition": "opacity 0.6s ease 0.5s, top 0.6s ease 0.5s"
+        });
+      }
 
       $(".tile-mobile, .foot-mobile").removeClass("clicked");
       $(e).addClass("clicked");
@@ -216,6 +247,20 @@
       $(".foot-mobile").css({
         "height": "8vh",
         "max-height": "8vh"
+      });
+      $("#foot-mobile-logo, #foot-mobile-name").addClass("hidden").css({
+        "opacity": "0",
+        "top": "14.5vh",
+        "-webkit-transition": "opacity 0.1s ease, top 0.1s ease",
+        "-moz-transition": "opacity 0.1s ease, top 0.1s ease",
+        "transition": "opacity 0.1s ease, top 0.1s ease"
+      });
+      $("#foot-mobile-container").addClass("hidden").css({
+        "opacity": "0",
+        "top": "28vh",
+        "-webkit-transition": "opacity 0.1s ease, top 0.1s ease",
+        "-moz-transition": "opacity 0.1s ease, top 0.1s ease",
+        "transition": "opacity 0.1s ease, top 0.1s ease"
       });
       $(".tile-mobile").css({
         "height": "28vh",
