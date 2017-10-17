@@ -360,11 +360,11 @@
     });
     setTimeout(function() {
       insertHtml("#stat-content>.content-box-content", `
-        <div style="position: absolute; left: 0; right: 0; margin: auto; top: 40%; height: 10vh; text-align: center">
-          <i class="fa fa-ban" style="display: inline-block; height: 10vh; width: 10vh; color: #640D14; font-size: 10vh; margin-right: 3vh"></i>
-          <div style="display: inline-block; height: 10vh">
-            <div style="color: #640D14; line-height: 6vh; font-size: 4vh; font-family: 'Russo One', sans-serif; text-align: left">404</div>
-            <div style="color: #333; text-align: left">Тражена&nbsp;функционалност&nbsp;није&nbsp;тренутно&nbsp;доступна.</div>
+        <div style="position: absolute; left: 0; right: 0; margin: auto; top: 40%; width: fit-content; padding: 0 2vh 0 2vh">
+          <i class="fa fa-ban" style="position: absolute; height: 10vh; width: 10vh; color: #640D14; font-size: 10vh"></i>
+          <div style="padding-left: 13vh">
+            <div style="color: #640D14; line-height: 6vh; font-size: 4vh; font-family: 'Russo One', sans-serif">404</div>
+            <div style="color: #333">Тражена функционалност није тренутно доступна.</div>
           </div>
         </div>
       `);
