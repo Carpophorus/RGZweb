@@ -93,6 +93,7 @@ a, a:hover, a:focus, a:visited {
   line-height: 8vh;
   font-size: 3.3vh;
   text-align: center;
+  z-index: 1001;
 }
 
 #navi>#navi-collapse {
