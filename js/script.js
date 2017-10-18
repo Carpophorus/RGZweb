@@ -125,6 +125,11 @@
     }
   };
 
+  RGZ.mobileMenuTouchOutside = function() {
+    if (!$("#navi-button").hasClass("collapsed"))
+      $("#navi-button").click();
+  };
+
   RGZ.tileMouseOver = function(e) {
     $(".tile").removeClass("col-4").addClass("col-3").css({
       "max-width": "25%"
@@ -360,7 +365,7 @@
     });
     setTimeout(function() {
       insertHtml("#stat-content>.content-box-content", `
-        <div style="position: absolute; left: 0; right: 0; margin: auto; top: 40%; width: fit-content; padding: 0 2vh 0 2vh">
+        <div style="position: absolute; left: 0; right: 0; margin: auto; top: 40%; width: fit-content; padding: 0 3vh 0 3vh">
           <i class="fa fa-ban" style="position: absolute; height: 10vh; width: 10vh; color: #640D14; font-size: 10vh"></i>
           <div style="padding-left: 13vh">
             <div style="color: #640D14; line-height: 6vh; font-size: 4vh; font-family: 'Russo One', sans-serif">404</div>
@@ -630,6 +635,8 @@
 
   RGZ.naviMobile = function(n) {
     RGZ.loadPage(n); //TODO fix this
+    if (!$("#navi-button").hasClass("collapsed"))
+      $("#navi-button").click();
     if (history.state)
       if (history.state.state != n) history.pushState({
         state: n

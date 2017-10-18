@@ -32,9 +32,16 @@
       <div id="navi-stat" class="col-3"><span onclick="$RGZ.navi(2);">СТАЊЕ&nbsp;ПРЕДМЕТА</span></div>
       <div id="navi-info" class="col-3"><span onclick="$RGZ.navi(3);">ИНФОРМАЦИЈЕ</span></div>
     </div>
+    <div id="navi-button" class="hidden-lg-up collapsed" data-toggle="collapse" data-target="#navi-collapse" aria-controls="navi-collapse" aria-expanded="false"><i class="fa fa-bars"></i></div>
+    <ul class="collapse navbar-collapse" id="navi-collapse" aria-expanded="false">
+      <li id="navi-home" onclick="$RGZ.naviMobile(0);">ПОЧЕТНА</li>
+      <li id="navi-book" onclick="$RGZ.naviMobile(1);">ЗАКАЗИВАЊЕ</li>
+      <li id="navi-stat" onclick="$RGZ.naviMobile(2);">СТАЊЕ&nbsp;ПРЕДМЕТА</li>
+      <li id="navi-info" onclick="$RGZ.naviMobile(3);">ИНФОРМАЦИЈЕ</li>
+    </ul>
   </div>
 
-  <div id="tiles" class="row">
+  <div id="tiles" class="row" onclick="$RGZ.mobileMenuTouchOutside();">
 
     <div id="book" class="tile hidden-md-down col-4" onmouseover="RGZ.tileMouseOver(this);" onmouseout="RGZ.tileMouseOut();">
       <div class="tile-img"></div>
