@@ -287,11 +287,11 @@
         "width": "0"
       });
       $(".tile-mobile-text").css({
-        "top": "15vh",
+        "bottom": "15vh",
         "opacity": "0"
       });
       $(".tile-mobile-button").css({
-        "top": "1vh",
+        "bottom": "1vh",
         "opacity": "0"
       });
 
