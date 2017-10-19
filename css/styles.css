@@ -112,7 +112,7 @@ ul {
 }
 
 #tiles {
-  height: 90vh;
+  height: 86vh;
   margin-top: 7vh;
   position: relative;
 }
@@ -171,7 +171,7 @@ ul {
 
 #foot {
   background-color: #5A5050;
-  height: 3vh;
+  height: 7vh;
   color: #F4F8E6;
   position: absolute;
   bottom: 0;
@@ -191,7 +191,7 @@ ul {
   transition: height 0.4s ease, max-height 0.4s ease;
 }
 
-#foot-mobile-title {
+#foot-contact, #foot-mobile-title {
   width: 100%;
   text-align: center;
   font-family: 'Russo One', sans-serif;
@@ -199,13 +199,17 @@ ul {
   line-height: 8vh;
 }
 
+#foot-contact {
+  line-height: 6vh;
+}
+
 #foot-title {
-  font-size: 2vh;
+  font-size: 2.5vh;
   font-family: 'Russo One', sans-serif;
   line-height: 4.5vh;
   letter-spacing: 1px;
   position: absolute;
-  top: 0;
+  bottom: 19vh;
   width: 100%;
   text-align: center;
   opacity: 0;
@@ -218,10 +222,10 @@ ul {
   position: absolute;
   width: 100%;
   height: 14.5vh;
-  top: 4.5vh;
+  bottom: 4vh;
   background: url('../img/logo.gif') no-repeat;
   background-position: center;
-  background-size: auto 100%;
+  background-size: auto 90%;
   opacity: 0;
   -webkit-transition: opacity 0.4s ease 0.3s;
   -moz-transition: opacity 0.4s ease 0.3s;
@@ -230,16 +234,17 @@ ul {
 
 #foot-text-left {
   position: absolute;
-  top: 10vh;
+  bottom: 0;
   right: 50%;
   text-align: right;
   padding-right: 13vh;
   line-height: 3.5vh;
+  height: 10.5vh;
   font-size: 2vh;
   opacity: 0;
-  -webkit-transition: top 0.4s ease 0.3s, opacity 0.4s ease 0.3s;
-  -moz-transition: top 0.4s ease 0.3s, opacity 0.4s ease 0.3s;
-  transition: top 0.4s ease 0.3s, opacity 0.4s ease 0.3s;
+  -webkit-transition: bottom 0.4s ease 0.3s, opacity 0.4s ease 0.3s;
+  -moz-transition: bottom 0.4s ease 0.3s, opacity 0.4s ease 0.3s;
+  transition: bottom 0.4s ease 0.3s, opacity 0.4s ease 0.3s;
 }
 
 #foot-text-left i {
@@ -248,15 +253,16 @@ ul {
 
 #foot-text-right {
   position: absolute;
-  top: 10vh;
+  bottom: 0;
   left: 50%;
   padding-left: 13vh;
   line-height: 3.5vh;
+  height: 10.5vh;
   font-size: 2vh;
   opacity: 0;
-  -webkit-transition: top 0.4s ease 0.3s, opacity 0.4s ease 0.3s;
-  -moz-transition: top 0.4s ease 0.3s, opacity 0.4s ease 0.3s;
-  transition: top 0.4s ease 0.3s, opacity 0.4s ease 0.3s;
+  -webkit-transition: bottom 0.4s ease 0.3s, opacity 0.4s ease 0.3s;
+  -moz-transition: bottom 0.4s ease 0.3s, opacity 0.4s ease 0.3s;
+  transition: bottom 0.4s ease 0.3s, opacity 0.4s ease 0.3s;
 }
 
 #foot-text-right i {
@@ -269,6 +275,7 @@ ul {
 }
 
 #foot-copy {
+  color: #92948A;
   height: 3vh;
   line-height: 3vh;
   font-size: 1.2vh;
@@ -280,7 +287,7 @@ ul {
 
 #foot-mobile-logo {
   position: absolute;
-  top: 14.5vh;
+  bottom: 44.5vh;
   right: 60%;
   width: 9vh;
   height: 9vh;
@@ -288,27 +295,29 @@ ul {
   background-position: center;
   background-size: auto 100%;
   opacity: 0;
-  -webkit-transition: opacity 0.6s ease 0.3s, top 0.6s ease 0.3s;
-  -moz-transition: opacity 0.6s ease 0.3s, top 0.6s ease 0.3s;
-  transition: opacity 0.6s ease 0.3s, top 0.6s ease 0.3s;
+  -webkit-transition: opacity 0.6s ease 0.3s, bottom 0.6s ease 0.3s;
+  -moz-transition: opacity 0.6s ease 0.3s, bottom 0.6s ease 0.3s;
+  transition: opacity 0.6s ease 0.3s, bottom 0.6s ease 0.3s;
 }
 
 #foot-mobile-name {
   position: absolute;
   left: 45%;
-  top: 14.5vh;
+  bottom: 44.5vh;
   font-family: 'Russo One', sans-serif;
   font-size: 2.5vh;
   line-height: 3vh;
   opacity: 0;
-  -webkit-transition: opacity 0.6s ease 0.3s, top 0.6s ease 0.3s;
-  -moz-transition: opacity 0.6s ease 0.3s, top 0.6s ease 0.3s;
-  transition: opacity 0.6s ease 0.3s, top 0.6s ease 0.3s;
+  -webkit-transition: opacity 0.6s ease 0.3s, bottom 0.6s ease 0.3s;
+  -moz-transition: opacity 0.6s ease 0.3s, bottom 0.6s ease 0.3s;
+  transition: opacity 0.6s ease 0.3s, bottom 0.6s ease 0.3s;
 }
 
 #foot-mobile-copy {
+  position: absolute;
+  color: #92948A;
   height: 3vh;
-  margin-top: 57vh;
+  bottom: 0;
   line-height: 3vh;
   font-size: 1.2vh;
   width: 100%;
@@ -322,13 +331,13 @@ ul {
 #foot-mobile-container {
   position: absolute;
   width: 100%;
-  top: 28vh;
+  bottom: 0vh;
   padding-left: 3vh;
   padding-right: 3vh;
   opacity: 0;
-  -webkit-transition: opacity 0.6s ease 0.5s, top 0.6s ease 0.5s;
-  -moz-transition: opacity 0.6s ease 0.5s, top 0.6s ease 0.5s;
-  transition: opacity 0.6s ease 0.5s, top 0.6s ease 0.5s;
+  -webkit-transition: opacity 0.6s ease 0.5s, bottom 0.6s ease 0.5s;
+  -moz-transition: opacity 0.6s ease 0.5s, bottom 0.6s ease 0.5s;
+  transition: opacity 0.6s ease 0.5s, bottom 0.6s ease 0.5s;
 }
 
 #foot-mobile a {
@@ -353,7 +362,7 @@ ul {
   position: absolute;
   width: 100%;
   font-family: 'Russo One', sans-serif;
-  line-height: 90vh;
+  line-height: 86vh;
   text-align: center;
   top: 0;
   color: #F4F8E6;
@@ -397,7 +406,7 @@ ul {
   width: 0;
   height: 1vh;
   position: absolute;
-  top: 20vh;
+  bottom: 47vh;
   -webkit-transition: width 0.8s ease 0.4s;
   -moz-transition: width 0.8s ease 0.4s;
   transition: width 0.8s ease 0.4s;
@@ -429,14 +438,14 @@ ul {
 
 .tile-mobile-text {
   position: absolute;
-  top: 35vh;
+  bottom: 15vh;
   opacity: 0;
   padding-left: 20%;
   padding-right: 10%;
   text-align: right;
-  -webkit-transition: top 0.6s ease 0.2s, opacity 0.6s ease 0.2s;
-  -moz-transition: top 0.6s ease 0.2s, opacity 0.6s ease 0.2s;
-  transition: top 0.6s ease 0.2s, opacity 0.6s ease 0.2s;
+  -webkit-transition: bottom 0.6s ease 0.2s, opacity 0.6s ease 0.2s;
+  -moz-transition: bottom 0.6s ease 0.2s, opacity 0.6s ease 0.2s;
+  transition: bottom 0.6s ease 0.2s, opacity 0.6s ease 0.2s;
 }
 
 .tile-button {
@@ -460,7 +469,7 @@ ul {
 
 .tile-mobile-button {
   position: absolute;
-  top: 58vh;
+  bottom: 1vh;
   right: 10%;
   width: 50%;
   height: 7vh;
@@ -471,9 +480,9 @@ ul {
   text-align: center;
   background-color: none;
   opacity: 0;
-  -webkit-transition: top 0.6s ease 0.4s, opacity 0.6s ease 0.4s, background-color 0.4s ease, color 0.4s ease;
-  -moz-transition: top 0.6s ease 0.4s, opacity 0.6s ease 0.4s, background-color 0.4s ease, color 0.4s ease;
-  transition: top 0.6s ease 0.4s, opacity 0.6s ease 0.4s, background-color 0.4s ease, color 0.4s ease;
+  -webkit-transition: bottom 0.6s ease 0.4s, opacity 0.6s ease 0.4s, background-color 0.4s ease, color 0.4s ease;
+  -moz-transition: bottom 0.6s ease 0.4s, opacity 0.6s ease 0.4s, background-color 0.4s ease, color 0.4s ease;
+  transition: bottom 0.6s ease 0.4s, opacity 0.6s ease 0.4s, background-color 0.4s ease, color 0.4s ease;
 }
 
 #book-mobile>.tile-mobile-button {
@@ -561,6 +570,7 @@ ul {
   width: 100%;
   height: 100%;
   opacity: 0;
+  overflow-y: auto;
   -webkit-transition: opacity 0.4s ease;
   -moz-transition: opacity 0.4s ease;
   transition: opacity 0.4s ease;
@@ -571,7 +581,7 @@ ul {
   width: 100%;
   height: 100%;
   opacity: 0;
-  line-height: 90vh;
+  line-height: 86vh;
   text-align: center;
   -webkit-transition: opacity 0.2s linear;
   -moz-transition: opacity 0.2s linear;

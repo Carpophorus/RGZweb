@@ -2,6 +2,7 @@
   RGZ = {};
 
   RGZ.nav = 0;
+  RGZ.desktopMouseOver = false;
 
   var insertHtml = function(selector, html) {
     var targetElem = document.querySelector(selector);
@@ -181,11 +182,11 @@
         "width": "0"
       });
       $(".tile-mobile-text").css({
-        "top": "35vh",
+        "bottom": "15vh",
         "opacity": "0"
       });
       $(".tile-mobile-button").css({
-        "top": "58vh",
+        "bottom": "1vh",
         "opacity": "0"
       });
 
@@ -203,27 +204,27 @@
         "width": "90%"
       });
       $(e).find(".tile-mobile-text").removeClass("hidden").css({
-        "top": "30vh",
+        "bottom": "20vh",
         "opacity": "1"
       });
       $(e).find(".tile-mobile-button").removeClass("hidden").css({
-        "top": "53vh",
+        "bottom": "6vh",
         "opacity": "1"
       });
 
       $("#foot-mobile-logo, #foot-mobile-name").addClass("hidden").css({
         "opacity": "0",
-        "top": "14.5vh",
-        "-webkit-transition": "opacity 0.1s ease, top 0.1s ease",
-        "-moz-transition": "opacity 0.1s ease, top 0.1s ease",
-        "transition": "opacity 0.1s ease, top 0.1s ease"
+        "bottom": "44.5vh",
+        "-webkit-transition": "opacity 0.1s ease, bottom 0.1s ease",
+        "-moz-transition": "opacity 0.1s ease, bottom 0.1s ease",
+        "transition": "opacity 0.1s ease, bottom 0.1s ease"
       });
       $("#foot-mobile-container").addClass("hidden").css({
         "opacity": "0",
-        "top": "28vh",
-        "-webkit-transition": "opacity 0.1s ease, top 0.1s ease",
-        "-moz-transition": "opacity 0.1s ease, top 0.1s ease",
-        "transition": "opacity 0.1s ease, top 0.1s ease"
+        "bottom": "0",
+        "-webkit-transition": "opacity 0.1s ease, bottom 0.1s ease",
+        "-moz-transition": "opacity 0.1s ease, bottom 0.1s ease",
+        "transition": "opacity 0.1s ease, bottom 0.1s ease"
       });
       if (!$(e).hasClass("foot-mobile"))
         $(e).css({
@@ -232,17 +233,17 @@
       else {
         $("#foot-mobile-logo, #foot-mobile-name").removeClass("hidden").css({
           "opacity": "1",
-          "top": "9.5vh",
-          "-webkit-transition": "opacity 0.6s ease 0.3s, top 0.6s ease 0.3s",
-          "-moz-transition": "opacity 0.6s ease 0.3s, top 0.6s ease 0.3s",
-          "transition": "opacity 0.6s ease 0.3s, top 0.6s ease 0.3s"
+          "bottom": "49.5vh",
+          "-webkit-transition": "opacity 0.6s ease 0.3s, bottom 0.6s ease 0.3s",
+          "-moz-transition": "opacity 0.6s ease 0.3s, bottom 0.6s ease 0.3s",
+          "transition": "opacity 0.6s ease 0.3s, bottom 0.6s ease 0.3s"
         });
         $("#foot-mobile-container").removeClass("hidden").css({
           "opacity": "1",
-          "top": "23vh",
-          "-webkit-transition": "opacity 0.6s ease 0.5s, top 0.6s ease 0.5s",
-          "-moz-transition": "opacity 0.6s ease 0.5s, top 0.6s ease 0.5s",
-          "transition": "opacity 0.6s ease 0.5s, top 0.6s ease 0.5s"
+          "bottom": "3vh",
+          "-webkit-transition": "opacity 0.6s ease 0.5s, bottom 0.6s ease 0.5s",
+          "-moz-transition": "opacity 0.6s ease 0.5s, bottom 0.6s ease 0.5s",
+          "transition": "opacity 0.6s ease 0.5s, bottom 0.6s ease 0.5s"
         });
       }
 
@@ -255,17 +256,17 @@
       });
       $("#foot-mobile-logo, #foot-mobile-name").addClass("hidden").css({
         "opacity": "0",
-        "top": "14.5vh",
-        "-webkit-transition": "opacity 0.1s ease, top 0.1s ease",
-        "-moz-transition": "opacity 0.1s ease, top 0.1s ease",
-        "transition": "opacity 0.1s ease, top 0.1s ease"
+        "bottom": "44.5vh",
+        "-webkit-transition": "opacity 0.1s ease, bottom 0.1s ease",
+        "-moz-transition": "opacity 0.1s ease, bottom 0.1s ease",
+        "transition": "opacity 0.1s ease, bottom 0.1s ease"
       });
       $("#foot-mobile-container").addClass("hidden").css({
         "opacity": "0",
-        "top": "28vh",
-        "-webkit-transition": "opacity 0.1s ease, top 0.1s ease",
-        "-moz-transition": "opacity 0.1s ease, top 0.1s ease",
-        "transition": "opacity 0.1s ease, top 0.1s ease"
+        "bottom": "0",
+        "-webkit-transition": "opacity 0.1s ease, bottom 0.1s ease",
+        "-moz-transition": "opacity 0.1s ease, bottom 0.1s ease",
+        "transition": "opacity 0.1s ease, bottom 0.1s ease"
       });
       $(".tile-mobile").css({
         "height": "28vh",
@@ -286,11 +287,11 @@
         "width": "0"
       });
       $(".tile-mobile-text").css({
-        "top": "35vh",
+        "top": "15vh",
         "opacity": "0"
       });
       $(".tile-mobile-button").css({
-        "top": "58vh",
+        "top": "1vh",
         "opacity": "0"
       });
 
@@ -644,27 +645,30 @@
   };
 
   RGZ.footMouseOver = function() {
+    RGZ.desktopMouseOver = true;
+    if (!RGZ.desktopMouseOver) return;
     $("#foot").css({
-      "height": "23vh"
+      "height": "29vh"
     });
     $("#foot-logo, #foot-title").removeClass("hidden").css({
       "opacity": "1"
     });
     $("#foot-text-left, #foot-text-right").removeClass("hidden").css({
-      "top": "7vh",
+      "bottom": "5.5vh",
       "opacity": 1
     });
   };
 
   RGZ.footMouseOut = function() {
+    RGZ.desktopMouseOver = false;
     $("#foot").css({
-      "height": "3vh"
+      "height": "7vh"
     });
     $("#foot-logo, #foot-title").addClass("hidden").css({
       "opacity": "0"
     });
     $("#foot-text-left, #foot-text-right").addClass("hidden").css({
-      "top": "10vh",
+      "bottom": "0.5vh",
       "opacity": 0
     });
   };
