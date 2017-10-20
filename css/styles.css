@@ -599,110 +599,84 @@ ul {
   transition: opacity 0.2s linear;
 }
 
-.spinner {
-  width: 10vh;
-  height: 10vh;
+.loader {
+  width: 15vh;
+  height: 15vh;
   position: absolute;
+  border: 1.5vh solid #F4F8E6;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
   margin: auto;
+  animation: loader 2s infinite ease;
 }
 
-.sk-cube-grid .sk-cube {
-  width: 33%;
-  height: 33%;
-  float: left;
-  -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
-  -moz-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
-  animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+.loader-inner {
+  vertical-align: top;
+  display: inline-block;
+  width: 100%;
+  animation: loader-inner 2s infinite ease-in;
 }
 
-.sk-cube-grid .sk-cube7 {
-  -webkit-animation-delay: 0s;
-  -moz-animation-delay: 0s;
-  animation-delay: 0s;
-}
-
-.sk-cube-grid .sk-cube4, .sk-cube-grid .sk-cube8 {
-  -webkit-animation-delay: 0.1s;
-  -moz-animation-delay: 0.1s;
-  animation-delay: 0.1s;
-}
-
-.sk-cube-grid .sk-cube1, .sk-cube-grid .sk-cube5, .sk-cube-grid .sk-cube9 {
-  -webkit-animation-delay: 0.2s;
-  -moz-animation-delay: 0.2s;
-  animation-delay: 0.2s;
-}
-
-.sk-cube-grid .sk-cube2, .sk-cube-grid .sk-cube6 {
-  -webkit-animation-delay: 0.3s;
-  -moz-animation-delay: 0.3s;
-  animation-delay: 0.3s;
-}
-
-.sk-cube-grid .sk-cube3 {
-  -webkit-animation-delay: 0.4s;
-  -moz-animation-delay: 0.4s;
-  animation-delay: 0.4s;
-}
-
-@-webkit-keyframes sk-cubeGridScaleDelay {
-  0%, 70%, 100% {
-    -webkit-transform: scale(1, 1);
-    -moz-transform: scale(1, 1);
-    -ms-transform: scale(1, 1);
-    transform: scale(1, 1);
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
   }
-  35% {
-    -webkit-transform: scale(0, 0);
-    -moz-transform: scale(0, 0);
-    -ms-transform: scale(0, 0);
-    transform: scale(0, 0);
+  25% {
+    transform: rotate(180deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  75% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
 
-@-moz-keyframes sk-cubeGridScaleDelay {
-  0%, 70%, 100% {
-    -webkit-transform: scale(1, 1);
-    -moz-transform: scale(1, 1);
-    -ms-transform: scale(1, 1);
-    transform: scale(1, 1);
+@keyframes loader-inner {
+  0% {
+    height: 0%;
   }
-  35% {
-    -webkit-transform: scale(0, 0);
-    -moz-transform: scale(0, 0);
-    -ms-transform: scale(0, 0);
-    transform: scale(0, 0);
+  25% {
+    height: 0%;
   }
-}
-
-@keyframes sk-cubeGridScaleDelay {
-  0%, 70%, 100% {
-    -webkit-transform: scale(1, 1);
-    -moz-transform: scale(1, 1);
-    -ms-transform: scale(1, 1);
-    transform: scale(1, 1);
+  50% {
+    height: 100%;
   }
-  35% {
-    -webkit-transform: scale(0, 0);
-    -moz-transform: scale(0, 0);
-    -ms-transform: scale(0, 0);
-    transform: scale(0, 0);
+  75% {
+    height: 100%;
+  }
+  100% {
+    height: 0%;
   }
 }
 
-#book-content .content-box-loader .spinner div {
+
+/*#book-content .loader {
+  border: 1.5vh solid #589662;
+}
+
+#stat-content .loader {
+  border: 1.5vh solid #3EACA8;
+}
+
+#info-content .loader {
+  border: 1.5vh solid #547A82;
+}*/
+
+#book-content .loader-inner {
   background-color: #589662;
 }
 
-#stat-content .content-box-loader .spinner div {
+#stat-content .loader-inner {
   background-color: #3EACA8;
 }
 
-#info-content .content-box-loader .spinner div {
+#info-content .loader-inner {
   background-color: #547A82;
 }
 
