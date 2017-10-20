@@ -653,11 +653,13 @@ ul {
   0%, 70%, 100% {
     -webkit-transform: scale(1);
     -moz-transform: scale(1);
+    -ms-transform: scale(1);
     transform: scale(1);
   }
   35% {
     -webkit-transform: scale(0);
     -moz-transform: scale(0);
+    -ms-transform: scale(0);
     transform: scale(0);
   }
 }
@@ -666,11 +668,13 @@ ul {
   0%, 70%, 100% {
     -webkit-transform: scale(1);
     -moz-transform: scale(1);
+    -ms-transform: scale(1);
     transform: scale(1);
   }
   35% {
     -webkit-transform: scale(0);
     -moz-transform: scale(0);
+    -ms-transform: scale(0);
     transform: scale(0);
   }
 }
@@ -679,11 +683,13 @@ ul {
   0%, 70%, 100% {
     -webkit-transform: scale(1);
     -moz-transform: scale(1);
+    -ms-transform: scale(1);
     transform: scale(1);
   }
   35% {
     -webkit-transform: scale(0);
     -moz-transform: scale(0);
+    -ms-transform: scale(0);
     transform: scale(0);
   }
 }
