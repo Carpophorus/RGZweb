@@ -102,15 +102,24 @@ button, button:hover, button:focus {
   line-height: 8vh;
   font-size: 3.3vh;
   text-align: center;
+  opacity: 0;
+  -webkit-transition: opacity 0.4s ease;
+  -moz-transition: opacity 0.4s ease;
+  transition: opacity 0.4s ease;
 }
 
 #navi>#navi-collapse {
   padding: 0;
 }
 
+#navi>#navi-button:hover, .tile-mobile-button:hover, li:hover {
+  cursor: pointer;
+}
+
 ul {
   margin-bottom: 0;
   border-top: 1px solid #5A5050;
+  list-style-type: none;
 }
 
 #navi>#navi-collapse>div {
@@ -678,6 +687,41 @@ ul {
 
 #info-content .loader-inner {
   background-color: #547A82;
+}
+
+.message-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.message-container {
+  display: inline-block;
+  margin-top: 40vh;
+  padding: 0 3vh 0 3vh;
+  text-align: left
+}
+
+.message-icon {
+  position: absolute;
+  width: 10vh;
+  height: 10vh;
+  font-size: 10vh
+}
+
+.message-ct-container {
+  padding-left: 13vh
+}
+
+.message-code {
+  line-height: 6vh;
+  font-size: 4vh;
+  font-family: 'Russo One', sans-serif;
+}
+
+.message-error .message-icon, .message-error .message-code {
+  color: #640D14;
 }
 
 @media (max-width: 990.5px) {

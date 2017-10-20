@@ -354,7 +354,7 @@
           "opacity": "1"
         });
       }, 200);
-    }, 2000); //this delay only simulating network response
+    }, 3000); //this delay only simulating network response
   };
 
   RGZ.fillStatContent = function() {
@@ -366,11 +366,13 @@
     });
     setTimeout(function() {
       insertHtml("#stat-content>.content-box-content", `
-        <div style="position: absolute; left: 0; right: 0; margin: auto; top: 40%; width: fit-content; padding: 0 3vh 0 3vh">
-          <i class="fa fa-ban" style="position: absolute; height: 10vh; width: 10vh; color: #640D14; font-size: 10vh"></i>
-          <div style="padding-left: 13vh">
-            <div style="color: #640D14; line-height: 6vh; font-size: 4vh; font-family: 'Russo One', sans-serif">404</div>
-            <div style="color: #333">Тражена функционалност није тренутно доступна.</div>
+        <div class="message-overlay">
+          <div class="message-container message-error">
+            <i class="message-icon fa fa-ban"></i>
+            <div class="message-ct-container">
+              <div class="message-code">404</div>
+              <div class="message-text">Тражена функционалност није тренутно доступна.</div>
+            </div>
           </div>
         </div>
       `);
@@ -382,7 +384,7 @@
           "opacity": "1"
         });
       }, 200);
-    }, 2000); //this delay only simulating network response
+    }, 3000); //this delay only simulating network response
   };
 
   RGZ.fillInfoContent = function() {
@@ -448,7 +450,7 @@
           "opacity": "1"
         });
       }, 200);
-    }, 2000); //this delay only simulating network response
+    }, 3000); //this delay only simulating network response
   };
 
   RGZ.loadPage = function(n) {
@@ -636,6 +638,17 @@
 
   RGZ.naviMobile = function(n) {
     RGZ.loadPage(n); //TODO fix this
+    if (n == 0) {
+      $("#navi-button").css({
+        "opacity": "0"
+      });
+      setTimeout(function() {
+        $("#navi-button").addClass("hidden")
+      }, 400);
+    } else if (n > 0 && n < 4)
+      $("#navi-button").removeClass("hidden").css({
+        "opacity": "1"
+      });
     if (!$("#navi-button").hasClass("collapsed"))
       $("#navi-button").click();
     if (history.state)
