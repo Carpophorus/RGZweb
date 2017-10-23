@@ -2,7 +2,7 @@
   RGZ = {};
 
   RGZ.nav = 0;
-  RGZ.desktopMouseOver = false;
+  RGZ.mobileButtonClicked = false;
 
   var insertHtml = function(selector, html) {
     var targetElem = document.querySelector(selector);
@@ -12,53 +12,34 @@
   document.addEventListener("DOMContentLoaded", function(event) {
     if (history.state != null) {
       if (history.state.state != null) {
-        if (window.innerWidth > 990.5) {
-          switch (history.state.state) {
-            case 0:
-              RGZ.navi(0);
-              break;
-            case 1:
-              RGZ.navi(1);
-              break;
-            case 2:
-              RGZ.navi(2);
-              break;
-            case 3:
-              RGZ.navi(3);
-              break;
-            default:
-              break;
-          }
-          if (history.state.state > 0) {
-            $("#navi-landing").css({
-              "opacity": "0"
+        switch (history.state.state) {
+          case 0:
+            RGZ.navi(0);
+            break;
+          case 1:
+            RGZ.navi(1);
+            break;
+          case 2:
+            RGZ.navi(2);
+            break;
+          case 3:
+            RGZ.navi(3);
+            break;
+          default:
+            break;
+        }
+        if (history.state.state > 0 && window.innerWidth > 990.5) {
+          $("#navi-landing").css({
+            "opacity": "0"
+          });
+          $("#navi-menu").removeClass("gone");
+          setTimeout(function() {
+            $("#navi-menu").css({
+              "opacity": "1"
             });
-            $("#navi-menu").removeClass("gone");
-            setTimeout(function() {
-              $("#navi-menu").css({
-                "opacity": "1"
-              });
-            }, 600);
-            $("#navi-menu div span").removeClass("active");
-            $("#navi-" + ((history.state.state == 1) ? "book" : ((history.state.state == 2) ? "stat" : "info")) + " span").addClass("active");
-          }
-        } else {
-          switch (history.state.state) {
-            case 0:
-              RGZ.naviMobile(0);
-              break;
-            case 1:
-              RGZ.naviMobile(1);
-              break;
-            case 2:
-              RGZ.naviMobile(2);
-              break;
-            case 3:
-              RGZ.naviMobile(3);
-              break;
-            default:
-              break;
-          }
+          }, 600);
+          $("#navi-menu div span").removeClass("active");
+          $("#navi-" + ((history.state.state == 1) ? "book" : ((history.state.state == 2) ? "stat" : "info")) + " span").addClass("active");
         }
       }
     } else {
@@ -74,53 +55,34 @@
   window.onpopstate = function(event) {
     if (event.state != null) {
       if (event.state.state != null) {
-        if (window.innerWidth > 990.5) {
-          switch (event.state.state) {
-            case 0:
-              RGZ.navi(0);
-              break;
-            case 1:
-              RGZ.navi(1);
-              break;
-            case 2:
-              RGZ.navi(2);
-              break;
-            case 3:
-              RGZ.navi(3);
-              break;
-            default:
-              break;
-          }
-          if (event.state.state > 0) {
-            $("#navi-landing").css({
-              "opacity": "0"
+        switch (event.state.state) {
+          case 0:
+            RGZ.navi(0);
+            break;
+          case 1:
+            RGZ.navi(1);
+            break;
+          case 2:
+            RGZ.navi(2);
+            break;
+          case 3:
+            RGZ.navi(3);
+            break;
+          default:
+            break;
+        }
+        if (event.state.state > 0 && window.innerWidth > 990.5) {
+          $("#navi-landing").css({
+            "opacity": "0"
+          });
+          $("#navi-menu").removeClass("gone");
+          setTimeout(function() {
+            $("#navi-menu").css({
+              "opacity": "1"
             });
-            $("#navi-menu").removeClass("gone");
-            setTimeout(function() {
-              $("#navi-menu").css({
-                "opacity": "1"
-              });
-            }, 600);
-            $("#navi-menu div span").removeClass("active");
-            $("#navi-" + ((event.state.state == 1) ? "book" : ((event.state.state == 2) ? "stat" : "info")) + " span").addClass("active");
-          }
-        } else {
-          switch (history.state.state) {
-            case 0:
-              RGZ.naviMobile(0);
-              break;
-            case 1:
-              RGZ.naviMobile(1);
-              break;
-            case 2:
-              RGZ.naviMobile(2);
-              break;
-            case 3:
-              RGZ.naviMobile(3);
-              break;
-            default:
-              break;
-          }
+          }, 600);
+          $("#navi-menu div span").removeClass("active");
+          $("#navi-" + ((event.state.state == 1) ? "book" : ((event.state.state == 2) ? "stat" : "info")) + " span").addClass("active");
         }
       }
     }
@@ -158,6 +120,10 @@
   };
 
   RGZ.tileMobileClick = function(e) {
+    if (RGZ.mobileButtonClicked) {
+      RGZ.mobileButtonClicked = false;
+      return;
+    }
     if (!$(e).hasClass("clicked")) {
       $(".tile-mobile, .foot-mobile").css({
         "height": "8vh",
@@ -597,6 +563,10 @@
           $(".tile").addClass("col-4").removeClass("col-3 col-6 col-12").css({
             "max-width": "33.333333%"
           });
+          $(".tile-mobile").removeClass("clicked").css({
+            "height": "28vh",
+            "max-height": "28vh"
+          });
         }, 400);
         break;
       case 1:
@@ -680,12 +650,28 @@
         });
         $("#navi-menu").addClass("gone");
       }, 600);
-      $(".tile-img").removeClass("gone");
+      $("#navi-button").css({
+        "opacity": "0"
+      });
       setTimeout(function() {
-        $(".tile>div").removeClass("gone");
+        $("#navi-button").addClass("hidden")
+      }, 400);
+      $(".tile-img, .tile-mobile-img").removeClass("gone");
+      setTimeout(function() {
+        $(".tile>div, .tile-mobile>div").removeClass("gone");
         $(".tile-title").css({
           "opacity": "1",
           "top": "0",
+          "color": "#F4F8E6",
+          "font-size": "3vh",
+          "letter-spacing": "2px",
+          "-webkit-transition": "top 0.4s ease, font-size 0.4s ease, color 0.4s ease",
+          "-moz-transition": "top 0.4s ease, font-size 0.4s ease, color 0.4s ease",
+          "transition": "top 0.4s ease, font-size 0.4s ease, color 0.4s ease"
+        });
+        $(".tile-mobile-title").css({
+          "opacity": "1",
+          "top": "11vh",
           "color": "#F4F8E6",
           "font-size": "3vh",
           "letter-spacing": "2px",
@@ -700,11 +686,24 @@
           "-moz-transition": "width 0.5s ease 0.4s",
           "transition": "width 0.5s ease 0.4s"
         });
+        $(".tile-mobile-line").css({
+          "opacity": "1",
+          "width": "0",
+          "-webkit-transition": "width 0.8s ease 0.4s",
+          "-moz-transition": "width 0.8s ease 0.4s",
+          "transition": "width 0.8s ease 0.4s"
+        });
         $(".tile-text").css({
           "top": "45vh",
           "-webkit-transition": "top 0.6s ease 0.2s, opacity 0.6s ease 0.2s",
           "-moz-transition": "top 0.6s ease 0.2s, opacity 0.6s ease 0.2s",
           "transition": "top 0.6s ease 0.2s, opacity 0.6s ease 0.2s"
+        });
+        $(".tile-mobile-text").css({
+          "bottom": "15vh",
+          "-webkit-transition": "bottom 0.6s ease 0.2s, opacity 0.6s ease 0.2s",
+          "-moz-transition": "bottom 0.6s ease 0.2s, opacity 0.6s ease 0.2s",
+          "transition": "bottom 0.6s ease 0.2s, opacity 0.6s ease 0.2s"
         });
         $(".tile-button").css({
           "top": "59vh",
@@ -712,13 +711,176 @@
           "-moz-transition": "top 0.6s ease 0.4s, opacity 0.6s ease 0.4s, background-color 0.4s ease, color 0.4s ease",
           "transition": "top 0.6s ease 0.4s, opacity 0.6s ease 0.4s, background-color 0.4s ease, color 0.4s ease"
         });
-        $("#book").css({
+        $(".tile-mobile-button").css({
+          "bottom": "1vh",
+          "-webkit-transition": "bottom 0.6s ease 0.4s, opacity 0.6s ease 0.4s, background-color 0.4s ease, color 0.4s ease",
+          "-moz-transition": "bottom 0.6s ease 0.4s, opacity 0.6s ease 0.4s, background-color 0.4s ease, color 0.4s ease",
+          "transition": "bottom 0.6s ease 0.4s, opacity 0.6s ease 0.4s, background-color 0.4s ease, color 0.4s ease"
+        });
+        $("#book, #book-mobile").css({
           "background-color": "#589662"
         });
-        $("#stat").css({
+        $("#stat, #stat-mobile").css({
           "background-color": "#3EACA8"
         });
-        $("#info").css({
+        $("#info, #info-mobile").css({
+          "background-color": "#547A82"
+        });
+        $(".tile").attr("onmouseover", "$RGZ.tileMouseOver(this);");
+        $(".tile").attr("onmouseout", "$RGZ.tileMouseOut();");
+      }, 400);
+      RGZ.loadPage(0);
+    } else {
+      if (window.innerWidth < 990.5) {
+        RGZ.mobileButtonClicked = true;
+        $("#navi-button").removeClass("hidden").css({
+          "opacity": "1"
+        });
+      }
+      if (RGZ.nav == 0) {
+        if (window.innerWidth > 990.5)
+          $("#navi-landing").css({
+            "opacity": "0"
+          });
+        $(".tile-title, .tile-line, .tile-text, .tile-button").css({
+          "opacity": "0",
+          "-webkit-transition": "opacity 0.4s ease",
+          "-moz-transition": "opacity 0.4s ease",
+          "transition": "opacity 0.4s ease"
+        });
+        $(".tile-mobile-title, .tile-mobile-line, .tile-mobile-text, .tile-mobile-button").css({
+          "opacity": "0",
+          "-webkit-transition": "opacity 0.4s ease",
+          "-moz-transition": "opacity 0.4s ease",
+          "transition": "opacity 0.4s ease"
+        });
+        $(".tile").removeAttr("onmouseover");
+        $(".tile").removeAttr("onmouseout");
+        $("#navi-menu").removeClass("gone");
+        setTimeout(function() {
+          $("#navi-menu").css({
+            "opacity": "1"
+          });
+        }, 600);
+        setTimeout(function() {
+          $(".tile-img, .tile-mobile-img").addClass("gone");
+        }, 1400);
+      }
+      $("#navi-menu div span").removeClass("active");
+      $("#navi-" + ((n == 1) ? "book" : ((n == 2) ? "stat" : "info")) + " span").addClass("active");
+      RGZ.loadPage(n);
+      setTimeout(function() {
+        $(".tile").css({
+          "max-width": "0"
+        });
+        $("#" + ((n == 1) ? "book" : ((n == 2) ? "stat" : "info"))).removeClass("col-6").addClass("col-12").css({
+          "max-width": "100%",
+          "background-color": "#E5EEC1"
+        });
+        $(".tile-title, .tile-line, .tile-text, .tile-button").addClass("gone");
+
+        $(".tile-mobile").css({
+          "height": "0",
+          "max-height": "0"
+        });
+        $("#" + ((n == 1) ? "book" : ((n == 2) ? "stat" : "info")) + "-mobile").css({
+          "height": "100%",
+          "max-height": "100%",
+          "background-color": "#E5EEC1"
+        });
+        $(".tile-mobile-title, .tile-mobile-line, .tile-mobile-text, .tile-mobile-button").addClass("gone");
+      }, 400);
+    }
+    if (!$("#navi-button").hasClass("collapsed"))
+      $("#navi-button").click();
+    if (history.state)
+      if (history.state.state != n) history.pushState({
+        state: n
+      }, null, null);
+  };
+
+  RGZ.naviMobile = function(n) {
+    //RGZ.loadPage(n);
+    /////////////////////////////////////////////////////////////////
+    if (n < 0 || n > 3) return;
+    else if (n == 0) {
+      $("#navi-menu").css({
+        "opacity": "0"
+      });
+      setTimeout(function() {
+        $("#navi-landing").css({
+          "opacity": "1"
+        });
+        $("#navi-menu").addClass("gone");
+      }, 600);
+      $(".tile-img, .tile-mobile-img").removeClass("gone");
+      setTimeout(function() {
+        $(".tile>div, .tile-mobile>div").removeClass("gone");
+        $(".tile-title").css({
+          "opacity": "1",
+          "top": "0",
+          "color": "#F4F8E6",
+          "font-size": "3vh",
+          "letter-spacing": "2px",
+          "-webkit-transition": "top 0.4s ease, font-size 0.4s ease, color 0.4s ease",
+          "-moz-transition": "top 0.4s ease, font-size 0.4s ease, color 0.4s ease",
+          "transition": "top 0.4s ease, font-size 0.4s ease, color 0.4s ease"
+        });
+        $(".tile-mobile-title").css({
+          "opacity": "1",
+          "top": "11vh",
+          "color": "#F4F8E6",
+          "font-size": "3vh",
+          "letter-spacing": "2px",
+          "-webkit-transition": "top 0.4s ease, font-size 0.4s ease, color 0.4s ease",
+          "-moz-transition": "top 0.4s ease, font-size 0.4s ease, color 0.4s ease",
+          "transition": "top 0.4s ease, font-size 0.4s ease, color 0.4s ease"
+        });
+        $(".tile-line").css({
+          "opacity": "1",
+          "width": "0",
+          "-webkit-transition": "width 0.5s ease 0.4s",
+          "-moz-transition": "width 0.5s ease 0.4s",
+          "transition": "width 0.5s ease 0.4s"
+        });
+        $(".tile-mobile-line").css({
+          "opacity": "1",
+          "width": "0",
+          "-webkit-transition": "width 0.8s ease 0.4s",
+          "-moz-transition": "width 0.8s ease 0.4s",
+          "transition": "width 0.8s ease 0.4s"
+        });
+        $(".tile-text").css({
+          "top": "45vh",
+          "-webkit-transition": "top 0.6s ease 0.2s, opacity 0.6s ease 0.2s",
+          "-moz-transition": "top 0.6s ease 0.2s, opacity 0.6s ease 0.2s",
+          "transition": "top 0.6s ease 0.2s, opacity 0.6s ease 0.2s"
+        });
+        $(".tile-mobile-text").css({
+          "bottom": "15vh",
+          "-webkit-transition": "bottom 0.6s ease 0.2s, opacity 0.6s ease 0.2s",
+          "-moz-transition": "bottom 0.6s ease 0.2s, opacity 0.6s ease 0.2s",
+          "transition": "bottom 0.6s ease 0.2s, opacity 0.6s ease 0.2s"
+        });
+        $(".tile-button").css({
+          "top": "59vh",
+          "-webkit-transition": "top 0.6s ease 0.4s, opacity 0.6s ease 0.4s, background-color 0.4s ease, color 0.4s ease",
+          "-moz-transition": "top 0.6s ease 0.4s, opacity 0.6s ease 0.4s, background-color 0.4s ease, color 0.4s ease",
+          "transition": "top 0.6s ease 0.4s, opacity 0.6s ease 0.4s, background-color 0.4s ease, color 0.4s ease"
+        });
+        $(".tile-mobile-button").css({
+          "bottom": "1vh",
+          "-webkit-transition": "bottom 0.6s ease 0.4s, opacity 0.6s ease 0.4s, background-color 0.4s ease, color 0.4s ease",
+          "-moz-transition": "bottom 0.6s ease 0.4s, opacity 0.6s ease 0.4s, background-color 0.4s ease, color 0.4s ease",
+          "transition": "bottom 0.6s ease 0.4s, opacity 0.6s ease 0.4s, background-color 0.4s ease, color 0.4s ease"
+        });
+        $("#book, #book-mobile").css({
+          "background-color": "#589662"
+        });
+        $("#stat, #stat-mobile").css({
+          "background-color": "#3EACA8"
+        });
+        $("#info, #info-mobile").css({
           "background-color": "#547A82"
         });
         $(".tile").attr("onmouseover", "$RGZ.tileMouseOver(this);");
@@ -736,6 +898,12 @@
           "-moz-transition": "opacity 0.4s ease",
           "transition": "opacity 0.4s ease"
         });
+        $(".tile-mobile-title, .tile-mobile-line, .tile-mobile-text, .tile-mobile-button").css({
+          "opacity": "0",
+          "-webkit-transition": "opacity 0.4s ease",
+          "-moz-transition": "opacity 0.4s ease",
+          "transition": "opacity 0.4s ease"
+        });
         $(".tile").removeAttr("onmouseover");
         $(".tile").removeAttr("onmouseout");
         $("#navi-menu").removeClass("gone");
@@ -745,7 +913,7 @@
           });
         }, 600);
         setTimeout(function() {
-          $(".tile-img").addClass("gone");
+          $(".tile-img, .tile-mobile-img").addClass("gone");
         }, 1400);
       }
       $("#navi-menu div span").removeClass("active");
@@ -760,16 +928,24 @@
           "background-color": "#E5EEC1"
         });
         $(".tile-title, .tile-line, .tile-text, .tile-button").addClass("gone");
+
+        $(".tile-mobile").css({
+          "height": "0",
+          "max-height": "0"
+        });
+        $("#" + ((n == 1) ? "book" : ((n == 2) ? "stat" : "info")) + "-mobile").css({
+          "height": "100%",
+          "max-height": "100%",
+          "background-color": "#E5EEC1"
+        });
+        $(".tile-mobile-title, .tile-mobile-line, .tile-mobile-text, .tile-mobile-button").addClass("gone");
       }, 400);
     }
     if (history.state)
       if (history.state.state != n) history.pushState({
         state: n
       }, null, null);
-  };
-
-  RGZ.naviMobile = function(n) {
-    RGZ.loadPage(n); //TODO fix this
+    /////////////////////////////////////////////////////////////////
     if (n == 0) {
       $("#navi-button").css({
         "opacity": "0"
@@ -777,10 +953,12 @@
       setTimeout(function() {
         $("#navi-button").addClass("hidden")
       }, 400);
-    } else if (n > 0 && n < 4)
+    } else if (n > 0 && n < 4) {
+      RGZ.mobileButtonClicked = true;
       $("#navi-button").removeClass("hidden").css({
         "opacity": "1"
       });
+    }
     if (!$("#navi-button").hasClass("collapsed"))
       $("#navi-button").click();
     if (history.state)
@@ -790,8 +968,6 @@
   };
 
   RGZ.footMouseOver = function() {
-    RGZ.desktopMouseOver = true;
-    if (!RGZ.desktopMouseOver) return;
     $("#foot").css({
       "height": "29vh"
     });
@@ -805,7 +981,6 @@
   };
 
   RGZ.footMouseOut = function() {
-    RGZ.desktopMouseOver = false;
     $("#foot").css({
       "height": "7vh"
     });
