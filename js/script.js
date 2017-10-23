@@ -730,7 +730,7 @@
         $("#info, #info-mobile").css({
           "background-color": "#547A82"
         });
-        $("#foot-mobile-title").removeClass("hidden").css({
+        $("#foot-mobile-title").removeClass("gone").css({
           "opacity": "1"
         });
         $(".tile").attr("onmouseover", "$RGZ.tileMouseOver(this);");
@@ -799,7 +799,7 @@
           "background-color": "#E5EEC1"
         });
         $(".tile-mobile-title, .tile-mobile-line, .tile-mobile-text, .tile-mobile-button").addClass("gone");
-        $("#foot-mobile-title").addClass("hidden");
+        $("#foot-mobile-title").addClass("gone");
       }, 400);
     }
     if (!$("#navi-button").hasClass("collapsed"))
