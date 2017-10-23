@@ -762,6 +762,9 @@
           "-moz-transition": "opacity 0.4s ease",
           "transition": "opacity 0.4s ease"
         });
+        setTimeout(function() {
+          $(".tile-mobile-line, .tile-mobile-text, .tile-mobile-button").addClass("hidden");
+        }, 400);
         $("#foot-mobile-title").css({
           "opacity": "0"
         });

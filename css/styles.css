@@ -674,19 +674,6 @@ ul {
   }
 }
 
-
-/*#book-content .loader {
-  border: 1.5vh solid #589662;
-}
-
-#stat-content .loader {
-  border: 1.5vh solid #3EACA8;
-}
-
-#info-content .loader {
-  border: 1.5vh solid #547A82;
-}*/
-
 #book-content .loader-inner {
   background-color: #589662;
 }
