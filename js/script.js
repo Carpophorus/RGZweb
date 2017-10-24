@@ -740,6 +740,8 @@
       RGZ.mobileButtonClicked = false;
     } else {
       if (window.innerWidth < 990.5) {
+        if ($("#foot-mobile").hasClass("clicked"))
+          $("#foot-mobile").click();
         RGZ.mobileButtonClicked = true;
         $("#navi-button").removeClass("hidden").css({
           "opacity": "1"

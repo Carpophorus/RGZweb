@@ -721,6 +721,10 @@ ul {
   color: #640D14;
 }
 
+#accordion, #documentation {
+  padding: 3vh 10vh 10vh 10vh;
+}
+
 @media (max-width: 990.5px) {
   #navi {
     min-height: 8vh;
@@ -730,10 +734,6 @@ ul {
     margin-top: 8vh;
     height: 92vh;
   }
-}
-
-#accordion, #documentation {
-  padding: 3vh 10vh 10vh 10vh;
 }
 
 @media (min-width: 1px) {
