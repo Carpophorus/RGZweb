@@ -848,11 +848,6 @@ ul {
   transition: color 0.4s ease;
 }
 
-.card-header .faq-link:hover {
-  cursor: pointer;
-  color: #F4F8E6;
-}
-
 .faq-expanded {
   color: #F4F8E6;
 }

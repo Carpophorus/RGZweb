@@ -399,7 +399,7 @@
       insertHtml("#info-content>.content-box-content", `
       <div class="btn-group" data-toggle="buttons">
         <label class="btn btn-primary active" onclick="RGZ.infoSwitch(0);">
-          <input type="radio" name="options" id="option1" autocomplete="off" checked>ДОКУМЕНТАЦИЈА
+          <input type="radio" name="options" id="option1" autocomplete="off" checked>ДОКУМЕНТА
         </label>
         <label class="btn btn-primary" onclick="RGZ.infoSwitch(1);">
           <input type="radio" name="options" id="option2" autocomplete="off">ПИТАЊА
@@ -422,7 +422,7 @@
       <div id="accordion" role="tablist" aria-multiselectable="true" class="gone">
         <div class="card">
           <div class="card-header" role="tab" id="headingOne">
-            <div class="faq-link collapsed" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseOne" data-target="#collapseOne" onclick="$RGZ.faqClicked(this);">
+            <div class="faq-link collapsed" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseOne" data-target="#collapseOne" onclick="$RGZ.faqClicked(this);" onmouseover="$RGZ.faqMouseOver(this);" onmouseout="$RGZ.faqMouseOut(this);">
               Како ће у својинским евиденцијама бити уписано право закупа грађевинског земљишта када је такво право конституисано у поступку комплетирања грађевинских парцела, па се исто лице/инвеститор на једном делу парцеле води као корисник градског грађевинског земљишта, а на другом делу као закупац? Како ће се формирати грађевинска парцела у таквом случају?
             </div>
           </div>
@@ -435,7 +435,7 @@
 
         <div class="card">
           <div class="card-header" role="tab" id="headingTwo">
-            <div class="faq-link collapsed" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseTwo" data-target="#collapseTwo" onclick="$RGZ.faqClicked(this);">
+            <div class="faq-link collapsed" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseTwo" data-target="#collapseTwo" onclick="$RGZ.faqClicked(this);" onmouseover="$RGZ.faqMouseOver(this);" onmouseout="$RGZ.faqMouseOut(this);">
               Зашто се не спроводе парцелације земљишта када се грађевинска парцела образује од катастарских парцела два или више различитих корисника? Да ли је могуће спровести такву парцелацију и утврдити идеалне сукорисничке делове на грађевинској парцели? На основу чега би такви сукорисници могли остварити право на заједничку изградњу на парцели?
             </div>
           </div>
@@ -448,7 +448,7 @@
 
         <div class="card">
           <div class="card-header" role="tab" id="headingThree">
-            <div class="faq-link collapsed" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseThree" data-target="#collapseThree" onclick="$RGZ.faqClicked(this);">
+            <div class="faq-link collapsed" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseThree" data-target="#collapseThree" onclick="$RGZ.faqClicked(this);" onmouseover="$RGZ.faqMouseOver(this);" onmouseout="$RGZ.faqMouseOut(this);">
               Да ли је РГЗ у могућности да у листу непокретности и другој својој документацији упише правни стварни облик својине на непокретностима?
             </div>
           </div>
@@ -461,7 +461,7 @@
 
         <div class="card">
           <div class="card-header" role="tab" id="headingFour">
-            <div class="faq-link collapsed" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseFour" data-target="#collapseFour" onclick="$RGZ.faqClicked(this);">
+            <div class="faq-link collapsed" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseFour" data-target="#collapseFour" onclick="$RGZ.faqClicked(this);" onmouseover="$RGZ.faqMouseOver(this);" onmouseout="$RGZ.faqMouseOut(this);">
               Какве су могућности коришћења ортофото планова за одржавање премера и прво (иницијално) укњижење објеката који до сада нису евидентирани на катастарским плановима и нису укњижени?
             </div>
           </div>
@@ -474,7 +474,7 @@
 
         <div class="card">
           <div class="card-header" role="tab" id="headingFive">
-            <div class="faq-link collapsed" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseFive" data-target="#collapseFive" onclick="$RGZ.faqClicked(this);">
+            <div class="faq-link collapsed" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseFive" data-target="#collapseFive" onclick="$RGZ.faqClicked(this);" onmouseover="$RGZ.faqMouseOver(this);" onmouseout="$RGZ.faqMouseOut(this);">
               На који начин ће се доказивати право својине и коришћења на земљишту где су изграђени објекти без грађевинске дозволе?
             </div>
           </div>
@@ -487,7 +487,7 @@
 
         <div class="card">
           <div class="card-header" role="tab" id="headingSix">
-            <div class="faq-link collapsed" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseSix" data-target="#collapseSix" onclick="$RGZ.faqClicked(this);">
+            <div class="faq-link collapsed" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseSix" data-target="#collapseSix" onclick="$RGZ.faqClicked(this);" onmouseover="$RGZ.faqMouseOver(this);" onmouseout="$RGZ.faqMouseOut(this);">
               Шта је основ за израду катастра непокретности у катастарским општинама (градско грађевинско земљиште) где је извршена обнова премера која није потврђена?
             </div>
           </div>
@@ -500,7 +500,7 @@
 
         <div class="card">
           <div class="card-header" role="tab" id="headingSeven">
-            <div class="faq-link collapsed" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseSeven" data-target="#collapseSeven" onclick="$RGZ.faqClicked(this);">
+            <div class="faq-link collapsed" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseSeven" data-target="#collapseSeven" onclick="$RGZ.faqClicked(this);" onmouseover="$RGZ.faqMouseOver(this);" onmouseout="$RGZ.faqMouseOut(this);">
               Да ли је дозвољено штампање извода из листа непокретности, и то само <i>В2</i> листа без <i>А</i>, <i>Б</i> и <i>В1</i> листа?
             </div>
           </div>
@@ -513,7 +513,7 @@
 
         <div class="card">
           <div class="card-header" role="tab" id="headingEight">
-            <div class="faq-link collapsed" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseEight" data-target="#collapseEight" onclick="$RGZ.faqClicked(this);">
+            <div class="faq-link collapsed" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseEight" data-target="#collapseEight" onclick="$RGZ.faqClicked(this);" onmouseover="$RGZ.faqMouseOver(this);" onmouseout="$RGZ.faqMouseOut(this);">
               Да ли је у поступку одржавања катастра непокретности дозвољено уписивање права својине на објекту изграђеном на подручју градског грађевинског земљишта, за који је издата грађевинска дозвола?
             </div>
           </div>
@@ -526,7 +526,7 @@
 
         <div class="card">
           <div class="card-header" role="tab" id="headingNine">
-            <div class="faq-link collapsed" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseNine" data-target="#collapseNine" onclick="$RGZ.faqClicked(this);">
+            <div class="faq-link collapsed" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseNine" data-target="#collapseNine" onclick="$RGZ.faqClicked(this);" onmouseover="$RGZ.faqMouseOver(this);" onmouseout="$RGZ.faqMouseOut(this);">
               Због укњижбе предузећа, катастарска општина (КО) је подељена и налази се у статусу <i>катастар непокретности</i> и <i>катастар земљишта</i>. Да ли промене у делу КО која је у статусу <i>катастар непокретности</i> треба евидентирати у списку промена за део КО која је у статусу <i>катастар земљишта</i>?
             </div>
           </div>
@@ -843,11 +843,35 @@
 
   RGZ.faqClicked = function(e) {
     if ($(e).hasClass("faq-expanded"))
-      $(".faq-link").removeClass("faq-expanded");
+      $(".faq-link").removeClass("faq-expanded").css({
+        "cursor": "pointer",
+        "color": "#333"
+      });
     else {
-      $(".faq-link").removeClass("faq-expanded");
-      $(e).addClass("faq-expanded");
+      $(".faq-link").removeClass("faq-expanded").css({
+        "cursor": "pointer",
+        "color": "#333"
+      });
+      $(e).addClass("faq-expanded").css({
+        "cursor": "pointer",
+        "color": "#F4F8E6"
+      });;
     }
+  };
+
+  RGZ.faqMouseOver = function(e) {
+    $(e).css({
+      "cursor": "pointer",
+      "color": "#F4F8E6"
+    });
+  };
+
+  RGZ.faqMouseOut = function(e) {
+    if (!$(e).hasClass("faq-expanded"))
+      $(e).css({
+        "cursor": "default",
+        "color": "#333"
+      });
   };
 
   global.$RGZ = RGZ;
