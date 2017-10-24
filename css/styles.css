@@ -872,7 +872,21 @@ ul {
     height: 92vh;
   }
   .btn-group {
-    padding: 10vh 10vh 5vh 10vh;
+    padding: 5vh;
+  }
+  #documentation, #accordion {
+    padding: 0 5vh 5vh 5vh;
+  }
+  .card-header .faq-link {
+    padding: 4vh 2vh;
+    text-align: left;
+  }
+  .card:first-child .card-header .faq-link {
+    padding-top: 0;
+  }
+  .card-block {
+    padding: 0 2vh 2vh 4vh;
+    text-align: left;
   }
 }
 
