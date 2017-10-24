@@ -600,7 +600,7 @@ ul {
   width: 100%;
   height: 100%;
   opacity: 0;
-  overflow-y: auto;
+  overflow-y: scroll;
   -webkit-transition: opacity 0.4s ease;
   -moz-transition: opacity 0.4s ease;
   transition: opacity 0.4s ease;
@@ -721,8 +721,145 @@ ul {
   color: #640D14;
 }
 
-#accordion, #documentation {
-  padding: 3vh 10vh 10vh 10vh;
+.btn-group {
+  width: 100%;
+  padding: 10vh 25% 5vh 25%;
+}
+
+.btn-group>label {
+  border-radius: 0;
+  width: 50%;
+  font-size: 2.5vh;
+  font-family: 'Russo One', sans-serif;
+  margin: 0;
+  border: 0.5vh solid;
+  height: 7vh;
+  line-height: 6vh;
+  overflow-x: hidden;
+}
+
+.btn-primary.focus, .btn-primary.active {
+  outline: 0;
+  box-shadow: none;
+}
+
+#book-content .btn-group>label {
+  border-color: #589662;
+}
+
+#book-content .btn-primary.active {
+  background-color: #589662;
+}
+
+#book-content .btn-primary:not(.active):hover {
+  background-color: #589662;
+}
+
+#stat-content .btn-group>label {
+  border-color: #3EACA8;
+}
+
+#stat-content .btn-primary.active {
+  background-color: #3EACA8;
+}
+
+#stat-content .btn-primary:not(.active):hover {
+  background-color: #3EACA8;
+}
+
+#info-content .btn-group>label {
+  border-color: #547A82;
+}
+
+#info-content .btn-primary.active {
+  background-color: #547A82;
+}
+
+#info-content .btn-primary:not(.active):hover {
+  background-color: #547A82;
+}
+
+.btn {
+  padding: 0;
+}
+
+.btn-group>label:hover {
+  cursor: pointer;
+}
+
+.btn-primary {
+  color: #333;
+  background-color: transparent;
+}
+
+.btn-primary.active {
+  color: #F4F8E6;
+}
+
+#documentation, #accordion {
+  padding: 5vh 10vh 10vh 10vh;
+  opacity: 1;
+  -webkit-transition: opacity 0.4s linear;
+  -moz-transition: opacity 0.4s linear;
+  transition: opacity 0.4s linear;
+}
+
+#accordion {
+  padding-top: 1vh;
+  opacity: 0;
+}
+
+.card {
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  border-top: 1px solid;
+}
+
+.card:first-child {
+  border-top: 0;
+}
+
+#book-content .card {
+  border-color: #589662;
+}
+
+#stat-content .card {
+  border-color: #3EACA8;
+}
+
+#info-content .card {
+  border-color: #547A82;
+}
+
+.card>.card-header {
+  border-radius: 0;
+  border: 0;
+  background-color: transparent;
+  padding: 0;
+  text-align: justify;
+}
+
+.card-header .faq-link {
+  padding: 4vh;
+  font-size: 2.8vh;
+  -webkit-transition: color 0.4s ease;
+  -moz-transition: color 0.4s ease;
+  transition: color 0.4s ease;
+}
+
+.card-header .faq-link:hover {
+  cursor: pointer;
+  color: #F4F8E6;
+}
+
+.faq-expanded {
+  color: #F4F8E6;
+}
+
+.card-block {
+  padding: 0 4vh 4vh 8vh;
+  text-align: justify;
 }
 
 @media (max-width: 990.5px) {
@@ -733,6 +870,9 @@ ul {
   #tiles {
     margin-top: 8vh;
     height: 92vh;
+  }
+  .btn-group {
+    padding: 10vh 10vh 5vh 10vh;
   }
 }
 

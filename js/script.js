@@ -353,14 +353,34 @@
     }, 3000); //this delay only simulating network response
   };
 
-  RGZ.infoDemo = function(n) {
+  RGZ.infoSwitch = function(n) {
     if (n == 0) {
-      $("#documentation").removeClass("gone");
-      $("#accordion").addClass("gone");
+      setTimeout(function() {
+        $("#accordion").addClass("gone");
+        $("#documentation").removeClass("gone");
+        setTimeout(function() {
+          $("#documentation").css({
+            "opacity": "1"
+          });
+        }, 10);
+      }, 400);
+      $("#accordion").css({
+        "opacity": "0"
+      });
     }
     if (n == 1) {
-      $("#documentation").addClass("gone");
-      $("#accordion").removeClass("gone");
+      setTimeout(function() {
+        $("#documentation").addClass("gone");
+        $("#accordion").removeClass("gone");
+        setTimeout(function() {
+          $("#accordion").css({
+            "opacity": "1"
+          });
+        }, 10);
+      }, 400);
+      $("#documentation").css({
+        "opacity": "0"
+      });
     }
   };
 
@@ -377,12 +397,12 @@
     });
     setTimeout(function() {
       insertHtml("#info-content>.content-box-content", `
-      <div class="btn-group" data-toggle="buttons" style="width: 100%; padding: 10vh 30% 5vh 30%">
-        <label class="btn btn-primary active" style="width: 20vw" onclick="RGZ.infoDemo(0);">
-          <input type="radio" name="options" id="option1" autocomplete="off" checked>Dokumentacija
+      <div class="btn-group" data-toggle="buttons">
+        <label class="btn btn-primary active" onclick="RGZ.infoSwitch(0);">
+          <input type="radio" name="options" id="option1" autocomplete="off" checked>ДОКУМЕНТАЦИЈА
         </label>
-        <label class="btn btn-primary"  style="width: 20vw" onclick="RGZ.infoDemo(1);">
-          <input type="radio" name="options" id="option2" autocomplete="off">Pitanja
+        <label class="btn btn-primary" onclick="RGZ.infoSwitch(1);">
+          <input type="radio" name="options" id="option2" autocomplete="off">ПИТАЊА
         </label>
       </div>
       <div id="documentation">
@@ -402,138 +422,117 @@
       <div id="accordion" role="tablist" aria-multiselectable="true" class="gone">
         <div class="card">
           <div class="card-header" role="tab" id="headingOne">
-            <h5 class="mb-0">
-              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                Kako će u svojinskim evidencijama biti upisano pravo zakupa građevinskog zemljišta, kada je takvo pravo konstituisano u postupku kompletiranja građevinskih parcela pa se isto lice – investitor, na delu parcele vodi kao korisnik Gradskog građevinskog zemljišta a na delu kao zakupac? Kako će se formirati građevinska parcela u takvom slučaju?
-              </a>
-            </h5>
+            <div class="faq-link collapsed" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseOne" data-target="#collapseOne" onclick="$RGZ.faqClicked(this);">
+              Како ће у својинским евиденцијама бити уписано право закупа грађевинског земљишта када је такво право конституисано у поступку комплетирања грађевинских парцела, па се исто лице/инвеститор на једном делу парцеле води као корисник градског грађевинског земљишта, а на другом делу као закупац? Како ће се формирати грађевинска парцела у таквом случају?
+            </div>
           </div>
-
           <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
             <div class="card-block">
-              Odgovor na ovo pitanje iziskuje pribavljanje stručnog mišljenja nadležnog Ministarstva oko primene Zakona o planiranju i izgradnji. Odgovor će biti dostavljen naknadno.
+              Одговор на ово питање изискује прибављање стручног мишљења надлежног Министарства око примене Закона о планирању и изградњи. Одговор ће бити достављен накнадно.
             </div>
           </div>
         </div>
 
         <div class="card">
           <div class="card-header" role="tab" id="headingTwo">
-            <h5 class="mb-0">
-              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                Zašto se ne sprovode parcelacije zemljišta kada se građevinska parcela obrazuje od katastarskih parcele dva ili više različitih korisnika? Da li je moguće sprovesti takvu parcelaciju i utvrditi idealne sukorisničke delove na građevinskoj parceli, na osnovu čega bi takvi sukorisnici mogli ostvariti pravo na zajedničku izgradnju na parceli?
-              </a>
-            </h5>
+            <div class="faq-link collapsed" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseTwo" data-target="#collapseTwo" onclick="$RGZ.faqClicked(this);">
+              Зашто се не спроводе парцелације земљишта када се грађевинска парцела образује од катастарских парцела два или више различитих корисника? Да ли је могуће спровести такву парцелацију и утврдити идеалне сукорисничке делове на грађевинској парцели? На основу чега би такви сукорисници могли остварити право на заједничку изградњу на парцели?
+            </div>
           </div>
           <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
             <div class="card-block">
-              Građevinska parcela se može obeležiti na terenu i sprovesti na planovima i u operatu, ne menjajući upis dosadašnjih korisnika. Formiranje građevinske parcele se može uraditi nakon donošenja akta nadležnog organa o rešavanju imovinsko pravnih odnosa.
+              Грађевинска парцела се може обележити на терену и спровести на плановима и у операту, не мењајући упис досадашњих корисника. Формирање грађевинске парцеле се може урадити након доношења акта надлежног органа о решавању имовинско-правних односа.
             </div>
           </div>
         </div>
 
         <div class="card">
           <div class="card-header" role="tab" id="headingThree">
-            <h5 class="mb-0">
-              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                Da li je RGZ u mogućnosti da u listu nepokretnosti i drugoj svojoj dokumentaciji upiše pravni stvarni oblik svojine na nepokretnostima?
-              </a>
-            </h5>
+            <div class="faq-link collapsed" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseThree" data-target="#collapseThree" onclick="$RGZ.faqClicked(this);">
+              Да ли је РГЗ у могућности да у листу непокретности и другој својој документацији упише правни стварни облик својине на непокретностима?
+            </div>
           </div>
           <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
             <div class="card-block">
-              U katastar nepokretnosti može da se upiše svaki oblik svojine.
+              У катастар непокретности може да се упише сваки облик својине.
             </div>
           </div>
         </div>
 
         <div class="card">
           <div class="card-header" role="tab" id="headingFour">
-            <h5 class="mb-0">
-              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                Kakve su mogućnosti korišćenja ortofoto planova za održavanje premera i prvo (inicijalno) uknjiženje objekata koji do sada nisu evidentirani na katastarskim planovima i nisu uknjiženi?
-              </a>
-            </h5>
+            <div class="faq-link collapsed" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseFour" data-target="#collapseFour" onclick="$RGZ.faqClicked(this);">
+              Какве су могућности коришћења ортофото планова за одржавање премера и прво (иницијално) укњижење објеката који до сада нису евидентирани на катастарским плановима и нису укњижени?
+            </div>
           </div>
-
           <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour">
             <div class="card-block">
-              Prema postojećim propisima podaci sadržani na ortofoto planovima se ne mogu koristiti za održavanje premera i uknjižbu objekata koji do sada nisu evidentirani na katastarskim planovima.
+              Према постојећим прописима, подаци садржани на ортофото плановима се не могу користити за одржавање премера и укњижбу објеката који до сада нису евидентирани на катастарским плановима.
             </div>
           </div>
         </div>
 
         <div class="card">
           <div class="card-header" role="tab" id="headingFive">
-            <h5 class="mb-0">
-              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                Na koji način će se dokazivati pravo svojine i korišćenja na zemljištu gde su izgrađeni objekti bez građevinske dozvole?
-              </a>
-            </h5>
+            <div class="faq-link collapsed" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseFive" data-target="#collapseFive" onclick="$RGZ.faqClicked(this);">
+              На који начин ће се доказивати право својине и коришћења на земљишту где су изграђени објекти без грађевинске дозволе?
+            </div>
           </div>
           <div id="collapseFive" class="collapse" role="tabpanel" aria-labelledby="headingFive">
             <div class="card-block">
-              Pravo svojine i korišćenja na zemljištu dokazuje se pred organom nadležnim za utvrđivanje tih prava. U katastru nepokretnosti se vrši upis već utvrđenih prava.
+              Право својине и коришћења на земљишту доказује се пред органом надлежним за утврђивање тих права. У катастру непокретности се врши упис већ утврђених права.
             </div>
           </div>
         </div>
 
         <div class="card">
           <div class="card-header" role="tab" id="headingSix">
-            <h5 class="mb-0">
-              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                Šta je osnov za izradu katastra nepokretnosti u katastarskim opštinama (gradsko građevinsko zemljište) gde je izvršena obnova premera koja nije potvrđena?
-              </a>
-            </h5>
+            <div class="faq-link collapsed" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseSix" data-target="#collapseSix" onclick="$RGZ.faqClicked(this);">
+              Шта је основ за израду катастра непокретности у катастарским општинама (градско грађевинско земљиште) где је извршена обнова премера која није потврђена?
+            </div>
           </div>
           <div id="collapseSix" class="collapse" role="tabpanel" aria-labelledby="headingSix">
             <div class="card-block">
-              Kako odgovor na ovo pitanje zahteva dublje analize premera, kako starog tako i novog, stepen ažurnosti starog premera i kvaliteta održavanja i vreme izvršenja obnove premera, propisano je da se u ovakvim slučajevima radi projektno rešenje.
+              Како одговор на ово питање захтева дубље анализе премера (како старог тако и новог), степена ажурности старог премера и квалитета одржавања и време извршења обнове премера, прописано је да се у оваквим случајевима ради пројектно решење.
             </div>
           </div>
         </div>
 
         <div class="card">
           <div class="card-header" role="tab" id="headingSeven">
-            <h5 class="mb-0">
-              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-                Da li je dozvoljeno štampanje izvoda iz lista nepokretnosti i to samo V2 lista bez A, B i V1 lista?
-              </a>
-            </h5>
+            <div class="faq-link collapsed" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseSeven" data-target="#collapseSeven" onclick="$RGZ.faqClicked(this);">
+              Да ли је дозвољено штампање извода из листа непокретности, и то само <i>В2</i> листа без <i>А</i>, <i>Б</i> и <i>В1</i> листа?
+            </div>
           </div>
-
           <div id="collapseSeven" class="collapse" role="tabpanel" aria-labelledby="headingSeven">
             <div class="card-block">
-              Dozvoljeno je izdavanje samo izvoda iz lista nepokretnosti odnosno samo izvoda iz V2 lista nepokretnosti sa naslovnom stranom.
+              Дозвољено је издавање само извода из листа непокретности, односно само извода из <i>В2</i> листа непокретности са насловном страном.
             </div>
           </div>
         </div>
 
         <div class="card">
           <div class="card-header" role="tab" id="headingEight">
-            <h5 class="mb-0">
-              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-                Da li je u postupku održavanja katastra nepokretnosti dozvoljeno upisivanje prava svojine na objektu izgrađenom na području gradskog građevinskog zemljišta, za koji je izdata građevinska dozvola?
-              </a>
-            </h5>
+            <div class="faq-link collapsed" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseEight" data-target="#collapseEight" onclick="$RGZ.faqClicked(this);">
+              Да ли је у поступку одржавања катастра непокретности дозвољено уписивање права својине на објекту изграђеном на подручју градског грађевинског земљишта, за који је издата грађевинска дозвола?
+            </div>
           </div>
           <div id="collapseEight" class="collapse" role="tabpanel" aria-labelledby="headingEight">
             <div class="card-block">
-              Na području gradskog građevinskog zemljišta u postupku održavanja katastra nepokretnosti za upis prava svojine na objektu neophodna je i upotrebna dozvola. Po osnovu građevinske dozvole može se upisati samo državina na objektu sa zabeleškom da za objekat nije izdata upotrebna dozvola pri čemu se kao datum upisa zabeleške upisuje datum pravosnažnosti rešenja kojim se dozvoljava upis držaoca objekta.
+               У поступку одржавања катастра непокретности, за упис права својине на објекту изграђеном на подручју градског грађевинског земљишта неопходна је и употребна дозвола. По основу грађевинске дозволе може се уписати само државина на објекту са забелешком да за објекат није издата употребна дозвола, при чему се као датум уписа забелешке уписује датум правоснажности решења којим се дозвољава упис држаоца објекта.
             </div>
           </div>
         </div>
 
         <div class="card">
           <div class="card-header" role="tab" id="headingNine">
-            <h5 class="mb-0">
-              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
-                Zbog uknjižbe preduzeća katastarska opština je podeljena i nalazi se u statusu katastar nepokretnosti i katastar zemljišta. Da li promene u delu KO koja je u statusu katastar nepokretnosti treba evidentirati u spisku promena za deo KO koja je u katastar zemljišta?
-              </a>
-            </h5>
+            <div class="faq-link collapsed" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseNine" data-target="#collapseNine" onclick="$RGZ.faqClicked(this);">
+              Због укњижбе предузећа, катастарска општина (КО) је подељена и налази се у статусу <i>катастар непокретности</i> и <i>катастар земљишта</i>. Да ли промене у делу КО која је у статусу <i>катастар непокретности</i> треба евидентирати у списку промена за део КО која је у статусу <i>катастар земљишта</i>?
+            </div>
           </div>
           <div id="collapseNine" class="collapse" role="tabpanel" aria-labelledby="headingNine">
             <div class="card-block">
-              Vodi se poseban spisak promena za deo KO koja je u statusu katastar nepokretnosti.
+              Води се посебан списак промена за део КО која је у статусу <i>катастар непокретности</i>.
             </div>
           </div>
         </div>
@@ -840,6 +839,15 @@
       "bottom": "0.5vh",
       "opacity": 0
     });
+  };
+
+  RGZ.faqClicked = function(e) {
+    if ($(e).hasClass("faq-expanded"))
+      $(".faq-link").removeClass("faq-expanded");
+    else {
+      $(".faq-link").removeClass("faq-expanded");
+      $(e).addClass("faq-expanded");
+    }
   };
 
   global.$RGZ = RGZ;
