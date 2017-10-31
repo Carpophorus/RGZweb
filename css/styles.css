@@ -29,6 +29,12 @@ button, button:hover, button:focus {
   padding: 0;
 }
 
+select, select:hover, select:focus {
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+}
+
 #navi {
   background-color: #F4F8E6;
   width: 100%;
@@ -248,7 +254,7 @@ ul {
   width: 100%;
   height: 14.5vh;
   bottom: 4vh;
-  background: url('../img/logo.gif') no-repeat;
+  background: url('../img/logo.svg') no-repeat;
   background-position: center;
   background-size: auto 90%;
   opacity: 0;
@@ -316,7 +322,7 @@ ul {
   right: 60%;
   width: 9vh;
   height: 9vh;
-  background: url('../img/logo.gif') no-repeat;
+  background: url('../img/logo.svg') no-repeat;
   background-position: center;
   background-size: auto 100%;
   opacity: 0;
@@ -485,7 +491,7 @@ ul {
   font-size: 2.5vh;
   font-family: 'Russo One', sans-serif;
   text-align: center;
-  background-color: transparent;
+  background-color: rgba(255, 255, 255, 0.1);
   opacity: 0;
   -webkit-transition: top 0.6s ease 0.4s, opacity 0.6s ease 0.4s, background-color 0.4s ease, color 0.4s ease;
   -moz-transition: top 0.6s ease 0.4s, opacity 0.6s ease 0.4s, background-color 0.4s ease, color 0.4s ease;
@@ -789,7 +795,7 @@ ul {
 
 .btn-primary {
   color: #333;
-  background-color: transparent;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .btn-primary.active {
@@ -802,6 +808,11 @@ ul {
   -webkit-transition: opacity 0.4s linear;
   -moz-transition: opacity 0.4s linear;
   transition: opacity 0.4s linear;
+}
+
+#documentation {
+  padding-left: 0;
+  padding-right: 0;
 }
 
 #accordion {
@@ -857,6 +868,96 @@ ul {
   text-align: justify;
 }
 
+#docs-select {
+  font-family: 'Russo One', sans-serif;
+  font-size: 2.5vh;
+  color: #333;
+  width: 50%;
+  margin: 0 25% 10vh 25%;
+  height: 7vh;
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-bottom: 0.6vh solid #547A82;
+  text-align-last: center;
+}
+
+#docsaux {
+  opacity: 0;
+  -webkit-transition: opacity 0.4s ease;
+  -moz-transition: opacity 0.4s ease;
+  transition: opacity 0.4s ease;
+}
+
+.docsaux-item {
+  padding: 7vh 25% 0 25%;
+  min-height: 15vh;
+}
+
+.docsaux-item:nth-child(1) {
+  padding-top: 0;
+}
+
+.docsaux-item-download {
+  display: block;
+  position: absolute;
+  left: 15%;
+  color: #547A82 !important;
+  -webkit-transition: color 0.4s ease;
+  -moz-transition: color 0.4s ease;
+  transition: color 0.4s ease;
+}
+
+a.docsaux-item-download:hover {
+  color: #F4F8E6 !important;
+  cursor: pointer;
+}
+
+.docsaux-item-download-icon {
+  display: block;
+  width: 10vw;
+  height: 10vh;
+  text-align: center;
+  font-size: 9vh;
+  line-height: 10vh;
+}
+
+.docsaux-item-download-text {
+  padding-top: 1vh;
+  text-align: center;
+  font-family: 'Russo One', sans-serif;
+  font-size: 1.7vh;
+  line-height: 2vh;
+  width: 10vw;
+}
+
+.docsaux-item-title {
+  font-family: 'Russo One', sans-serif;
+  font-size: 3.5vh;
+  line-height: 4.5vh;
+  padding-bottom: 1.5vh;
+  color: #547A82;
+}
+
+.docsaux-item-title>.docsaux-item-title-asterisk, .docsaux-item-text-asterisk {
+  color: #640D14;
+}
+
+.docsaux-item-text-asterisk {
+  padding-top: 2vh;
+  font-size: 1.7vh;
+}
+
+.docsaux-item-text-asterisk-inner {
+  position: absolute;
+  left: 24%;
+}
+
+.docsaux-item-text {
+  text-align: justify;
+}
+
 @media (max-width: 990.5px) {
   #navi {
     min-height: 8vh;
@@ -871,6 +972,23 @@ ul {
   }
   #documentation, #accordion {
     padding: 0 5vh 5vh 5vh;
+  }
+  #docs-select {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
+  .docsaux-item {
+    padding: 7vh 0 0 20%;
+  }
+  .docsaux-item-download {
+    left: 5%;
+  }
+  .docsaux-item-text {
+    text-align: left;
+  }
+  .docsaux-item-text-asterisk-inner {
+    left: 19%;
   }
   .card-header .faq-link {
     padding: 4vh 2vh;

@@ -384,8 +384,118 @@
     }
   };
 
-  RGZ.infoDocsDemo = function() {
-    $("#docsaux").removeClass("gone");
+  RGZ.infoDocs = function() {
+    $("#docs-select").prop("disabled", true);
+    $("#docsaux").css({
+      "opacity": "0"
+    });
+    setTimeout(function() {
+      $("#docsaux").addClass("gone");
+    }, 400);
+    $(".content-box-loader").css({
+      "opacity": "1",
+      "top": "10vh"
+    });
+    //api call
+    setTimeout(function() { //this when response received
+      //insert response or render first
+      insertHtml("#docsaux", `
+        <div class="docsaux-item">
+          <a class="docsaux-item-download" href="https://www.google.rs/" target="_blank">
+            <i class="docsaux-item-download-icon fa fa-file-text"></i>
+            <div class="docsaux-item-download-text">ПРЕУЗМИТЕ<br>ОБРАЗАЦ</div>
+          </a>
+          <div class="docsaux-item-title">
+            ОБРАЗАЦ 1
+          </div>
+          <div class="docsaux-item-text">
+            Опис обрасца, обавезна поља, посебне напомене, лорем ипсум долор сит амет, цонсецтетур адиписицинг елит, сед до еиусмод темпор инцидидунт ут лаборе ет долоре магна аликва. Ут еним ад миним вениам, квис ноструд еxерцитатион улламцо лаборис ниси ут аликвип екс еа цоммодо цонсекват.
+          </div>
+        </div>
+        <div class="docsaux-item">
+          <a class="docsaux-item-download" href="https://www.google.rs/" target="_blank">
+            <i class="docsaux-item-download-icon fa fa-file-text"></i>
+            <div class="docsaux-item-download-text">ПРЕУЗМИТЕ<br>ОБРАЗАЦ</div>
+          </a>
+          <div class="docsaux-item-title">
+            ОБРАЗАЦ 2
+          </div>
+          <div class="docsaux-item-text">
+            Опис обрасца, обавезна поља, посебне напомене, лорем ипсум долор сит амет, цонсецтетур адиписицинг елит, сед до еиусмод темпор инцидидунт ут лаборе ет долоре магна аликва. Ут еним ад миним вениам, квис ноструд еxерцитатион улламцо лаборис ниси ут аликвип екс еа цоммодо цонсекват.
+          </div>
+        </div>
+        <div class="docsaux-item">
+          <div class="docsaux-item-download">
+            <i class="docsaux-item-download-icon fa fa-gavel"></i>
+          </div>
+          <div class="docsaux-item-title">
+            СУДСКО РЕШЕЊЕ
+          </div>
+          <div class="docsaux-item-text">
+            Морате имати решење X. Решење не сме бити старије од 6 месеци. Лорем ипсум долор сит амет, цонсецтетур адиписицинг елит.
+          </div>
+        </div>
+        <div class="docsaux-item">
+          <div class="docsaux-item-download">
+            <i class="docsaux-item-download-icon fa fa-book"></i>
+          </div>
+          <div class="docsaux-item-title">
+            ПРЕДМЕТНА ДОКУМЕНТАЦИЈА
+          </div>
+          <div class="docsaux-item-text">
+            Морате имати одобрења X, Y и Z. Предметна документација мора бити претходно комплетирана у поступку W. Лорем ипсум долор сит амет, цонсецтетур адиписицинг елит.
+          </div>
+        </div>
+        <div class="docsaux-item">
+          <div class="docsaux-item-download">
+            <i class="docsaux-item-download-icon fa fa-id-card"></i>
+          </div>
+          <div class="docsaux-item-title">
+            КОПИЈА ЛИЧНЕ КАРТЕ<br>(ОРИГИНАЛ НА УВИД)
+          </div>
+          <div class="docsaux-item-text">
+            Проверите да Вам лична карта није истекла. Копија не треба да буде оверена. Лорем ипсум долор сит амет, цонсецтетур адиписицинг елит, сед до еиусмод темпор инцидидунт ут лаборе ет долоре магна аликва.
+          </div>
+        </div>
+        <div class="docsaux-item">
+          <a class="docsaux-item-download" href="https://www.google.rs/" target="_blank">
+            <i class="docsaux-item-download-icon fa fa-money"></i>
+            <div class="docsaux-item-download-text">ПРИМЕР<br>УПЛАТНИЦЕ</div>
+          </a>
+          <div class="docsaux-item-title">
+            300&nbsp;РСД&nbsp;<span class="docsaux-item-title-asterisk">✱</span>
+          </div>
+          <div class="docsaux-item-text">
+            Прималац, жиро-рачун, позив на број, лорем ипсум долор сит амет, цонсецтетур адиписицинг елит, сед до еиусмод темпор инцидидунт ут лаборе ет долоре магна аликва.
+            <div class="docsaux-item-text-asterisk">
+              <div class="docsaux-item-text-asterisk-inner">✱</div>Напомена да се таксе могу разликовати од наведених услед специјалних случајева [овде по уплати]. Лорем ипсум долор сит амет, цонсецтетур адиписицинг елит, сед до еиусмод темпор инцидидунт ут лаборе ет долоре магна аликва.
+            </div>
+          </div>
+        </div>
+        <div class="docsaux-item">
+          <div class=docsaux-item-text>
+            <div class=docsaux-item-text-asterisk>
+              <div class="docsaux-item-text-asterisk-inner">✱</div>Напомена да се таксе могу разликовати од наведених услед специјалних случајева [овде по документацији]. Лорем ипсум долор сит амет, цонсецтетур адиписицинг елит, сед до еиусмод темпор инцидидунт ут лаборе ет долоре магна аликва.
+            </div>
+          </div>
+        </div>
+      `);
+      $("#docsaux").removeClass("gone");
+      setTimeout(function() {
+        $("#docsaux").css({
+          "opacity": "1"
+        });
+      }, 10);
+      $(".content-box-loader").css({
+        "opacity": "0"
+      });
+      setTimeout(function() {
+        $(".content-box-loader").css({
+          "top": "0"
+        });
+      }, 400);
+      $("#docs-select").prop("disabled", false);
+    }, 3000); //this delay only simulating network response
   };
 
   RGZ.fillInfoContent = function() {
@@ -406,17 +516,14 @@
         </label>
       </div>
       <div id="documentation">
-        <select onchange="$RGZ.infoDocsDemo();">
-          <option disabled selected value> -- izaberite dokumentaciju -- </option>
-          <option value="1">Dokument 1</option>
-          <option value="1">Predmet 1</option>
-          <option value="1">Dokument 2</option>
-          <option value="1">Zahtev 1</option>
+        <select id="docs-select" onchange="$RGZ.infoDocs();">
+          <option disabled selected value>ИЗАБЕРИТЕ ЖЕЉЕНУ ДОКУМЕНТАЦИЈУ</option>
+          <option value="1">Документ 1</option>
+          <option value="1">Документ 2</option>
+          <option value="1">Захтев 1</option>
+          <option value="1">Захтев 2</option>
         </select>
-        <div id="docsaux" class="gone" style="padding: 5vh">
-          formular 1 download, formular 1 opis
-          <br><br>formular 2 download, formular 2 opis
-          <br><br>predviđena taksa, napomena za specijalne slučajeve
+        <div id="docsaux" class="gone">
         </div>
       </div>
       <div id="accordion" role="tablist" aria-multiselectable="true" class="gone">
@@ -572,17 +679,23 @@
         if (RGZ.nav == 1) break;
         if (RGZ.nav == 0)
           setTimeout(function() {
-            $("#book-content").removeClass("gone").css({
-              "opacity": "1"
-            });
+            $("#book-content").removeClass("gone");
+            setTimeout(function() {
+              $("#book-content").css({
+                "opacity": "1"
+              });
+            }, 5);
           }, 1000);
         else {
           $(".content-box").css({
             "opacity": "0"
           });
-          $("#book-content").removeClass("gone").css({
-            "opacity": "1"
-          });
+          $("#book-content").removeClass("gone");
+          setTimeout(function() {
+            $("#book-content").css({
+              "opacity": "1"
+            });
+          }, 5);
           setTimeout(function() {
             $("#stat-content, #info-content").addClass("gone");
           }, 400);
@@ -593,17 +706,23 @@
         if (RGZ.nav == 2) break;
         if (RGZ.nav == 0)
           setTimeout(function() {
-            $("#stat-content").removeClass("gone").css({
-              "opacity": "1"
-            });
+            $("#stat-content").removeClass("gone");
+            setTimeout(function() {
+              $("#stat-content").css({
+                "opacity": "1"
+              });
+            }, 5);
           }, 1000);
         else {
           $(".content-box").css({
             "opacity": "0"
           });
-          $("#stat-content").removeClass("gone").css({
-            "opacity": "1"
-          });
+          $("#stat-content").removeClass("gone");
+          setTimeout(function() {
+            $("#stat-content").css({
+              "opacity": "1"
+            });
+          }, 5);
           setTimeout(function() {
             $("#book-content, #info-content").addClass("gone");
           }, 400);
@@ -614,17 +733,23 @@
         if (RGZ.nav == 3) break;
         if (RGZ.nav == 0)
           setTimeout(function() {
-            $("#info-content").removeClass("gone").css({
-              "opacity": "1"
-            });
+            $("#info-content").removeClass("gone");
+            setTimeout(function() {
+              $("#info-content").css({
+                "opacity": "1"
+              });
+            }, 5);
           }, 1000);
         else {
           $(".content-box").css({
             "opacity": "0"
           });
-          $("#info-content").removeClass("gone").css({
-            "opacity": "1"
-          });
+          $("#info-content").removeClass("gone");
+          setTimeout(function() {
+            $("#info-content").css({
+              "opacity": "1"
+            });
+          }, 5);
           setTimeout(function() {
             $("#stat-content, #book-content").addClass("gone");
           }, 400);
