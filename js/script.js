@@ -517,7 +517,7 @@
       </div>
       <div id="documentation">
         <select id="docs-select" onchange="$RGZ.infoDocs();">
-          <option disabled selected hidden>ИЗАБЕРИТЕ ЖЕЉЕНУ ДОКУМЕНТАЦИЈУ</option>
+          <option disabled selected hidden>ИЗАБЕРИТЕ ДОКУМЕНТАЦИЈУ...</option>
           <option value="1">Документ 1</option>
           <option value="1">Документ 2</option>
           <option value="1">Захтев 1</option>
