@@ -48,7 +48,7 @@
       }, null, null);
       RGZ.loadPage(0);
       RGZ.footMouseOver();
-      setTimeout(RGZ.footMouseOut, 1500);
+      setTimeout(RGZ.footMouseOut, 2500);
     }
   });
 
@@ -301,6 +301,76 @@
     });
   };
 
+  RGZ.checkboxClicked = function(e) {
+    if ($(e).find("i").hasClass("fa-square-o"))
+      $(e).find("i").removeClass("fa-square-o").addClass("fa-check-square-o");
+    else
+      $(e).find("i").addClass("fa-square-o").removeClass("fa-check-square-o");
+  };
+
+  RGZ.fetchCounterTimes = function() {
+    //memorise value of select?
+    $("#counter-select").prop("disabled", true);
+    $("#book-counter-aux, #counter-time-select").css({
+      "opacity": "0"
+    });
+    setTimeout(function() {
+      $("#book-counter-aux, #counter-time-select").addClass("gone");
+      $("#book-counter-aux>input").val("");
+      $("#book-counter-check>i").removeClass("fa-check-square-o").addClass("fa-square-o");
+    }, 400);
+    $(".content-box-loader").css({
+      "opacity": "1",
+      "top": "10vh"
+    });
+    setTimeout(function() {
+      //api call
+      setTimeout(function() { //this when response received
+        //generate html
+        var selectHtml = `
+          <option disabled selected hidden>ИЗАБЕРИТЕ ТЕРМИН...</option>
+          <option value="1">07:00</option>
+          <option value="2">08:00</option>
+          <option value="3">09:00</option>
+          <option value="4">10:00</option>
+          <option value="5">11:00</option>
+          <option value="6">12:00</option>
+          <option value="7">13:00</option>
+          <option value="8">14:00</option>
+          <option value="9">15:00</option>
+          <option value="10">16:00</option>
+          <option value="11">17:00</option>
+        `;
+        insertHtml("#counter-time-select", selectHtml);
+        $("#counter-time-select").removeClass("gone");
+        setTimeout(function() {
+          $("#counter-time-select").css({
+            "opacity": "1"
+          });
+        }, 10);
+        $(".content-box-loader").css({
+          "opacity": "0"
+        });
+        setTimeout(function() {
+          $(".content-box-loader").css({
+            "top": "0"
+          });
+        }, 400);
+        $("#counter-select").prop("disabled", false);
+      }, 2600); //this delay only simulating network response, fetch times for selected counter and insert into second dropdown
+    }, 400);
+  };
+
+  RGZ.bookCounterTime = function() {
+    //memorise value of select?
+    $("#book-counter-aux").removeClass("gone");
+    setTimeout(function() {
+      $("#book-counter-aux").css({
+        "opacity": "1"
+      })
+    }, 10);
+  };
+
   RGZ.fillBookContent = function() {
     $("#book-content>.content-box-loader").css({
       "opacity": "1"
@@ -310,7 +380,37 @@
     });
     setTimeout(function() {
       insertHtml("#book-content>.content-box-content", `
-        <div style="padding: 10vh; text-align: center">book content</div>
+        <div class="btn-group" data-toggle="buttons">
+          <label class="btn btn-primary active" onclick="RGZ.bookSwitch(0);">
+            <input type="radio" name="options" id="option1" autocomplete="off" checked>ШАЛТЕРИ
+          </label>
+          <label class="btn btn-primary" onclick="RGZ.bookSwitch(1);">
+            <input type="radio" name="options" id="option2" autocomplete="off">КАНЦЕЛАРИЈЕ
+          </label>
+        </div>
+        <div id="book-counters">
+          <select id="counter-select" onchange="$RGZ.fetchCounterTimes();">
+            <option disabled selected hidden>ИЗАБЕРИТЕ ШАЛТЕР...</option>
+            <option value="1">Шалтер 1</option>
+            <option value="2">Шалтер 2</option>
+            <option value="3">Шалтер 3</option>
+            <option value="4">Шалтер 4</option>
+          </select>
+          <select id="counter-time-select" class="gone" onchange="$RGZ.bookCounterTime();">
+          </select>
+          <div id="book-counter-aux" class="aux-container gone">
+            <input id="book-counter-name" placeholder="име и презиме ✱" onfocus="this.placeholder=''" onblur="this.placeholder='име и презиме ✱'">
+            <input id="book-counter-id" placeholder="број личне карте ✱" onfocus="this.placeholder=''" onblur="this.placeholder='број личне карте ✱'">
+            <input id="book-counter-phone" placeholder="телефон" onfocus="this.placeholder=''" onblur="this.placeholder='телефон'">
+            <input id="book-counter-mail" placeholder="e-mail" onfocus="this.placeholder=''" onblur="this.placeholder='e-mail'">
+            <div id="book-counter-check" onclick="RGZ.checkboxClicked(this);"><i class="fa fa-square-o"></i></div>
+            <label class="checkbox-label" onclick="RGZ.checkboxClicked($('#book-counter-check'));">Потврђујем да имам потпуну и правилно попуњену документацију, као и исправно уплаћене таксе за захтев/предмет због којег заказујем термин. Такође, пристајем да наредна странка буде услужена уколико се не појавим у заказано време.</label>
+            <!--<button class="g-recaptcha" data-sitekey="6LfwyjYUAAAAAFRNVQ7w4LQjP3wQp4PwUG0ef19r" data-callback="YourOnSubmitFn">Submit</button>-->
+            <div class="form-button">ЗАКАЖИ</div>
+          </div>
+        </div>
+        <div id="book-offices" class="gone">
+        </div>
       `);
       $(".content-box-loader").css({
         "opacity": "0"
@@ -320,7 +420,7 @@
           "opacity": "1"
         });
       }, 200);
-    }, 3000); //this delay only simulating network response
+    }, 3000); //this delay only simulating network response, fetch counters and offices for first dropdown in both sections
   };
 
   RGZ.fillStatContent = function() {
@@ -507,144 +607,144 @@
     });
     setTimeout(function() {
       insertHtml("#info-content>.content-box-content", `
-      <div class="btn-group" data-toggle="buttons">
-        <label class="btn btn-primary active" onclick="RGZ.infoSwitch(0);">
-          <input type="radio" name="options" id="option1" autocomplete="off" checked>ДОКУМЕНТА
-        </label>
-        <label class="btn btn-primary" onclick="RGZ.infoSwitch(1);">
-          <input type="radio" name="options" id="option2" autocomplete="off">ПИТАЊА
-        </label>
-      </div>
-      <div id="documentation">
-        <select id="docs-select" onchange="$RGZ.infoDocs();">
-          <option disabled selected hidden>ИЗАБЕРИТЕ ДОКУМЕНТАЦИЈУ...</option>
-          <option value="1">Документ 1</option>
-          <option value="1">Документ 2</option>
-          <option value="1">Захтев 1</option>
-          <option value="1">Захтев 2</option>
-        </select>
-        <div id="docsaux" class="gone">
+        <div class="btn-group" data-toggle="buttons">
+          <label class="btn btn-primary active" onclick="RGZ.infoSwitch(0);">
+            <input type="radio" name="options" id="option1" autocomplete="off" checked>ДОКУМЕНТА
+          </label>
+          <label class="btn btn-primary" onclick="RGZ.infoSwitch(1);">
+            <input type="radio" name="options" id="option2" autocomplete="off">ПИТАЊА
+          </label>
         </div>
-      </div>
-      <div id="accordion" role="tablist" aria-multiselectable="true" class="gone">
-        <div class="card">
-          <div class="card-header" role="tab" id="headingOne">
-            <div class="faq-link collapsed" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseOne" data-target="#collapseOne" onclick="$RGZ.faqClicked(this);" onmouseover="$RGZ.faqMouseOver(this);" onmouseout="$RGZ.faqMouseOut(this);">
-              Како ће у својинским евиденцијама бити уписано право закупа грађевинског земљишта када је такво право конституисано у поступку комплетирања грађевинских парцела, па се исто лице/инвеститор на једном делу парцеле води као корисник градског грађевинског земљишта, а на другом делу као закупац? Како ће се формирати грађевинска парцела у таквом случају?
-            </div>
-          </div>
-          <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
-            <div class="card-block">
-              Одговор на ово питање изискује прибављање стручног мишљења надлежног Министарства око примене Закона о планирању и изградњи. Одговор ће бити достављен накнадно.
-            </div>
+        <div id="documentation">
+          <select id="docs-select" onchange="$RGZ.infoDocs();">
+            <option disabled selected hidden>ИЗАБЕРИТЕ ДОКУМЕНТАЦИЈУ...</option>
+            <option value="1">Документ 1</option>
+            <option value="2">Документ 2</option>
+            <option value="3">Захтев 1</option>
+            <option value="4">Захтев 2</option>
+          </select>
+          <div id="docsaux" class="aux-container gone">
           </div>
         </div>
+        <div id="accordion" role="tablist" aria-multiselectable="true" class="gone">
+          <div class="card">
+            <div class="card-header" role="tab" id="headingOne">
+              <div class="faq-link collapsed" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseOne" data-target="#collapseOne" onclick="$RGZ.faqClicked(this);" onmouseover="$RGZ.faqMouseOver(this);" onmouseout="$RGZ.faqMouseOut(this);">
+                Како ће у својинским евиденцијама бити уписано право закупа грађевинског земљишта када је такво право конституисано у поступку комплетирања грађевинских парцела, па се исто лице/инвеститор на једном делу парцеле води као корисник градског грађевинског земљишта, а на другом делу као закупац? Како ће се формирати грађевинска парцела у таквом случају?
+              </div>
+            </div>
+            <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+              <div class="card-block">
+                Одговор на ово питање изискује прибављање стручног мишљења надлежног Министарства око примене Закона о планирању и изградњи. Одговор ће бити достављен накнадно.
+              </div>
+            </div>
+          </div>
 
-        <div class="card">
-          <div class="card-header" role="tab" id="headingTwo">
-            <div class="faq-link collapsed" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseTwo" data-target="#collapseTwo" onclick="$RGZ.faqClicked(this);" onmouseover="$RGZ.faqMouseOver(this);" onmouseout="$RGZ.faqMouseOut(this);">
-              Зашто се не спроводе парцелације земљишта када се грађевинска парцела образује од катастарских парцела два или више различитих корисника? Да ли је могуће спровести такву парцелацију и утврдити идеалне сукорисничке делове на грађевинској парцели? На основу чега би такви сукорисници могли остварити право на заједничку изградњу на парцели?
+          <div class="card">
+            <div class="card-header" role="tab" id="headingTwo">
+              <div class="faq-link collapsed" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseTwo" data-target="#collapseTwo" onclick="$RGZ.faqClicked(this);" onmouseover="$RGZ.faqMouseOver(this);" onmouseout="$RGZ.faqMouseOut(this);">
+                Зашто се не спроводе парцелације земљишта када се грађевинска парцела образује од катастарских парцела два или више различитих корисника? Да ли је могуће спровести такву парцелацију и утврдити идеалне сукорисничке делове на грађевинској парцели? На основу чега би такви сукорисници могли остварити право на заједничку изградњу на парцели?
+              </div>
+            </div>
+            <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+              <div class="card-block">
+                Грађевинска парцела се може обележити на терену и спровести на плановима и у операту, не мењајући упис досадашњих корисника. Формирање грађевинске парцеле се може урадити након доношења акта надлежног органа о решавању имовинско-правних односа.
+              </div>
             </div>
           </div>
-          <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
-            <div class="card-block">
-              Грађевинска парцела се може обележити на терену и спровести на плановима и у операту, не мењајући упис досадашњих корисника. Формирање грађевинске парцеле се може урадити након доношења акта надлежног органа о решавању имовинско-правних односа.
-            </div>
-          </div>
-        </div>
 
-        <div class="card">
-          <div class="card-header" role="tab" id="headingThree">
-            <div class="faq-link collapsed" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseThree" data-target="#collapseThree" onclick="$RGZ.faqClicked(this);" onmouseover="$RGZ.faqMouseOver(this);" onmouseout="$RGZ.faqMouseOut(this);">
-              Да ли је РГЗ у могућности да у листу непокретности и другој својој документацији упише правни стварни облик својине на непокретностима?
+          <div class="card">
+            <div class="card-header" role="tab" id="headingThree">
+              <div class="faq-link collapsed" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseThree" data-target="#collapseThree" onclick="$RGZ.faqClicked(this);" onmouseover="$RGZ.faqMouseOver(this);" onmouseout="$RGZ.faqMouseOut(this);">
+                Да ли је РГЗ у могућности да у листу непокретности и другој својој документацији упише правни стварни облик својине на непокретностима?
+              </div>
+            </div>
+            <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+              <div class="card-block">
+                У катастар непокретности може да се упише сваки облик својине.
+              </div>
             </div>
           </div>
-          <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
-            <div class="card-block">
-              У катастар непокретности може да се упише сваки облик својине.
-            </div>
-          </div>
-        </div>
 
-        <div class="card">
-          <div class="card-header" role="tab" id="headingFour">
-            <div class="faq-link collapsed" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseFour" data-target="#collapseFour" onclick="$RGZ.faqClicked(this);" onmouseover="$RGZ.faqMouseOver(this);" onmouseout="$RGZ.faqMouseOut(this);">
-              Какве су могућности коришћења ортофото планова за одржавање премера и прво (иницијално) укњижење објеката који до сада нису евидентирани на катастарским плановима и нису укњижени?
+          <div class="card">
+            <div class="card-header" role="tab" id="headingFour">
+              <div class="faq-link collapsed" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseFour" data-target="#collapseFour" onclick="$RGZ.faqClicked(this);" onmouseover="$RGZ.faqMouseOver(this);" onmouseout="$RGZ.faqMouseOut(this);">
+                Какве су могућности коришћења ортофото планова за одржавање премера и прво (иницијално) укњижење објеката који до сада нису евидентирани на катастарским плановима и нису укњижени?
+              </div>
+            </div>
+            <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour">
+              <div class="card-block">
+                Према постојећим прописима, подаци садржани на ортофото плановима се не могу користити за одржавање премера и укњижбу објеката који до сада нису евидентирани на катастарским плановима.
+              </div>
             </div>
           </div>
-          <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour">
-            <div class="card-block">
-              Према постојећим прописима, подаци садржани на ортофото плановима се не могу користити за одржавање премера и укњижбу објеката који до сада нису евидентирани на катастарским плановима.
-            </div>
-          </div>
-        </div>
 
-        <div class="card">
-          <div class="card-header" role="tab" id="headingFive">
-            <div class="faq-link collapsed" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseFive" data-target="#collapseFive" onclick="$RGZ.faqClicked(this);" onmouseover="$RGZ.faqMouseOver(this);" onmouseout="$RGZ.faqMouseOut(this);">
-              На који начин ће се доказивати право својине и коришћења на земљишту где су изграђени објекти без грађевинске дозволе?
+          <div class="card">
+            <div class="card-header" role="tab" id="headingFive">
+              <div class="faq-link collapsed" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseFive" data-target="#collapseFive" onclick="$RGZ.faqClicked(this);" onmouseover="$RGZ.faqMouseOver(this);" onmouseout="$RGZ.faqMouseOut(this);">
+                На који начин ће се доказивати право својине и коришћења на земљишту где су изграђени објекти без грађевинске дозволе?
+              </div>
+            </div>
+            <div id="collapseFive" class="collapse" role="tabpanel" aria-labelledby="headingFive">
+              <div class="card-block">
+                Право својине и коришћења на земљишту доказује се пред органом надлежним за утврђивање тих права. У катастру непокретности се врши упис већ утврђених права.
+              </div>
             </div>
           </div>
-          <div id="collapseFive" class="collapse" role="tabpanel" aria-labelledby="headingFive">
-            <div class="card-block">
-              Право својине и коришћења на земљишту доказује се пред органом надлежним за утврђивање тих права. У катастру непокретности се врши упис већ утврђених права.
-            </div>
-          </div>
-        </div>
 
-        <div class="card">
-          <div class="card-header" role="tab" id="headingSix">
-            <div class="faq-link collapsed" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseSix" data-target="#collapseSix" onclick="$RGZ.faqClicked(this);" onmouseover="$RGZ.faqMouseOver(this);" onmouseout="$RGZ.faqMouseOut(this);">
-              Шта је основ за израду катастра непокретности у катастарским општинама (градско грађевинско земљиште) где је извршена обнова премера која није потврђена?
+          <div class="card">
+            <div class="card-header" role="tab" id="headingSix">
+              <div class="faq-link collapsed" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseSix" data-target="#collapseSix" onclick="$RGZ.faqClicked(this);" onmouseover="$RGZ.faqMouseOver(this);" onmouseout="$RGZ.faqMouseOut(this);">
+                Шта је основ за израду катастра непокретности у катастарским општинама (градско грађевинско земљиште) где је извршена обнова премера која није потврђена?
+              </div>
+            </div>
+            <div id="collapseSix" class="collapse" role="tabpanel" aria-labelledby="headingSix">
+              <div class="card-block">
+                Како одговор на ово питање захтева дубље анализе премера (како старог тако и новог), степена ажурности старог премера и квалитета одржавања и време извршења обнове премера, прописано је да се у оваквим случајевима ради пројектно решење.
+              </div>
             </div>
           </div>
-          <div id="collapseSix" class="collapse" role="tabpanel" aria-labelledby="headingSix">
-            <div class="card-block">
-              Како одговор на ово питање захтева дубље анализе премера (како старог тако и новог), степена ажурности старог премера и квалитета одржавања и време извршења обнове премера, прописано је да се у оваквим случајевима ради пројектно решење.
-            </div>
-          </div>
-        </div>
 
-        <div class="card">
-          <div class="card-header" role="tab" id="headingSeven">
-            <div class="faq-link collapsed" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseSeven" data-target="#collapseSeven" onclick="$RGZ.faqClicked(this);" onmouseover="$RGZ.faqMouseOver(this);" onmouseout="$RGZ.faqMouseOut(this);">
-              Да ли је дозвољено штампање извода из листа непокретности, и то само <i>В2</i> листа без <i>А</i>, <i>Б</i> и <i>В1</i> листа?
+          <div class="card">
+            <div class="card-header" role="tab" id="headingSeven">
+              <div class="faq-link collapsed" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseSeven" data-target="#collapseSeven" onclick="$RGZ.faqClicked(this);" onmouseover="$RGZ.faqMouseOver(this);" onmouseout="$RGZ.faqMouseOut(this);">
+                Да ли је дозвољено штампање извода из листа непокретности, и то само <i>В2</i> листа без <i>А</i>, <i>Б</i> и <i>В1</i> листа?
+              </div>
+            </div>
+            <div id="collapseSeven" class="collapse" role="tabpanel" aria-labelledby="headingSeven">
+              <div class="card-block">
+                Дозвољено је издавање само извода из листа непокретности, односно само извода из <i>В2</i> листа непокретности са насловном страном.
+              </div>
             </div>
           </div>
-          <div id="collapseSeven" class="collapse" role="tabpanel" aria-labelledby="headingSeven">
-            <div class="card-block">
-              Дозвољено је издавање само извода из листа непокретности, односно само извода из <i>В2</i> листа непокретности са насловном страном.
-            </div>
-          </div>
-        </div>
 
-        <div class="card">
-          <div class="card-header" role="tab" id="headingEight">
-            <div class="faq-link collapsed" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseEight" data-target="#collapseEight" onclick="$RGZ.faqClicked(this);" onmouseover="$RGZ.faqMouseOver(this);" onmouseout="$RGZ.faqMouseOut(this);">
-              Да ли је у поступку одржавања катастра непокретности дозвољено уписивање права својине на објекту изграђеном на подручју градског грађевинског земљишта, за који је издата грађевинска дозвола?
+          <div class="card">
+            <div class="card-header" role="tab" id="headingEight">
+              <div class="faq-link collapsed" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseEight" data-target="#collapseEight" onclick="$RGZ.faqClicked(this);" onmouseover="$RGZ.faqMouseOver(this);" onmouseout="$RGZ.faqMouseOut(this);">
+                Да ли је у поступку одржавања катастра непокретности дозвољено уписивање права својине на објекту изграђеном на подручју градског грађевинског земљишта, за који је издата грађевинска дозвола?
+              </div>
+            </div>
+            <div id="collapseEight" class="collapse" role="tabpanel" aria-labelledby="headingEight">
+              <div class="card-block">
+                 У поступку одржавања катастра непокретности, за упис права својине на објекту изграђеном на подручју градског грађевинског земљишта неопходна је и употребна дозвола. По основу грађевинске дозволе може се уписати само државина на објекту са забелешком да за објекат није издата употребна дозвола, при чему се као датум уписа забелешке уписује датум правоснажности решења којим се дозвољава упис држаоца објекта.
+              </div>
             </div>
           </div>
-          <div id="collapseEight" class="collapse" role="tabpanel" aria-labelledby="headingEight">
-            <div class="card-block">
-               У поступку одржавања катастра непокретности, за упис права својине на објекту изграђеном на подручју градског грађевинског земљишта неопходна је и употребна дозвола. По основу грађевинске дозволе може се уписати само државина на објекту са забелешком да за објекат није издата употребна дозвола, при чему се као датум уписа забелешке уписује датум правоснажности решења којим се дозвољава упис држаоца објекта.
-            </div>
-          </div>
-        </div>
 
-        <div class="card">
-          <div class="card-header" role="tab" id="headingNine">
-            <div class="faq-link collapsed" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseNine" data-target="#collapseNine" onclick="$RGZ.faqClicked(this);" onmouseover="$RGZ.faqMouseOver(this);" onmouseout="$RGZ.faqMouseOut(this);">
-              Због укњижбе предузећа, катастарска општина (КО) је подељена и налази се у статусу <i>катастар непокретности</i> и <i>катастар земљишта</i>. Да ли промене у делу КО која је у статусу <i>катастар непокретности</i> треба евидентирати у списку промена за део КО која је у статусу <i>катастар земљишта</i>?
+          <div class="card">
+            <div class="card-header" role="tab" id="headingNine">
+              <div class="faq-link collapsed" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseNine" data-target="#collapseNine" onclick="$RGZ.faqClicked(this);" onmouseover="$RGZ.faqMouseOver(this);" onmouseout="$RGZ.faqMouseOut(this);">
+                Због укњижбе предузећа, катастарска општина (КО) је подељена и налази се у статусу <i>катастар непокретности</i> и <i>катастар земљишта</i>. Да ли промене у делу КО која је у статусу <i>катастар непокретности</i> треба евидентирати у списку промена за део КО која је у статусу <i>катастар земљишта</i>?
+              </div>
+            </div>
+            <div id="collapseNine" class="collapse" role="tabpanel" aria-labelledby="headingNine">
+              <div class="card-block">
+                Води се посебан списак промена за део КО која је у статусу <i>катастар непокретности</i>.
+              </div>
             </div>
           </div>
-          <div id="collapseNine" class="collapse" role="tabpanel" aria-labelledby="headingNine">
-            <div class="card-block">
-              Води се посебан списак промена за део КО која је у статусу <i>катастар непокретности</i>.
-            </div>
-          </div>
-        </div>
 
-      </div>
+        </div>
       `);
       $(".content-box-loader").css({
         "opacity": "0"
