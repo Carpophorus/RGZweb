@@ -944,7 +944,7 @@ ul {
   padding: 0 2vh;
 }
 
-#book-counter-check {
+#book-counter-check, #book-office-check {
   display: inline-block;
   width: 5vh;
   height: 5vh;

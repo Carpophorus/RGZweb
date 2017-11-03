@@ -308,6 +308,37 @@
       $(e).find("i").addClass("fa-square-o").removeClass("fa-check-square-o");
   };
 
+  RGZ.bookSwitch = function(n) {
+    if (n == 0) {
+      setTimeout(function() {
+        $("#book-offices").addClass("gone");
+        $("#book-counters").removeClass("gone");
+        setTimeout(function() {
+          $("#book-counters").css({
+            "opacity": "1"
+          });
+        }, 10);
+      }, 400);
+      $("#book-offices").css({
+        "opacity": "0"
+      });
+    }
+    if (n == 1) {
+      setTimeout(function() {
+        $("#book-counters").addClass("gone");
+        $("#book-offices").removeClass("gone");
+        setTimeout(function() {
+          $("#book-offices").css({
+            "opacity": "1"
+          });
+        }, 10);
+      }, 400);
+      $("#book-counters").css({
+        "opacity": "0"
+      });
+    }
+  };
+
   RGZ.fetchCounterTimes = function() {
     //memorise value of select?
     $("#counter-select").prop("disabled", true);
@@ -361,11 +392,74 @@
     }, 400);
   };
 
+  RGZ.fetchOfficeTimes = function() {
+    //memorise value of select?
+    $("#office-select").prop("disabled", true);
+    $("#book-office-aux, #counter-time-select").css({
+      "opacity": "0"
+    });
+    setTimeout(function() {
+      $("#book-office-aux, #office-time-select").addClass("gone");
+      $("#book-office-aux>input").val("");
+      $("#book-office-check>i").removeClass("fa-check-square-o").addClass("fa-square-o");
+    }, 400);
+    $(".content-box-loader").css({
+      "opacity": "1",
+      "top": "10vh"
+    });
+    setTimeout(function() {
+      //api call
+      setTimeout(function() { //this when response received
+        //generate html
+        var selectHtml = `
+          <option disabled selected hidden>ИЗАБЕРИТЕ ТЕРМИН...</option>
+          <option value="1">07:00</option>
+          <option value="2">08:00</option>
+          <option value="3">09:00</option>
+          <option value="4">10:00</option>
+          <option value="5">11:00</option>
+          <option value="6">12:00</option>
+          <option value="7">13:00</option>
+          <option value="8">14:00</option>
+          <option value="9">15:00</option>
+          <option value="10">16:00</option>
+          <option value="11">17:00</option>
+        `;
+        insertHtml("#office-time-select", selectHtml);
+        $("#office-time-select").removeClass("gone");
+        setTimeout(function() {
+          $("#office-time-select").css({
+            "opacity": "1"
+          });
+        }, 10);
+        $(".content-box-loader").css({
+          "opacity": "0"
+        });
+        setTimeout(function() {
+          $(".content-box-loader").css({
+            "top": "0"
+          });
+        }, 400);
+        $("#office-select").prop("disabled", false);
+      }, 2600); //this delay only simulating network response, fetch times for selected counter and insert into second dropdown
+    }, 400);
+  };
+
   RGZ.bookCounterTime = function() {
     //memorise value of select?
     $("#book-counter-aux").removeClass("gone");
     setTimeout(function() {
       $("#book-counter-aux").css({
+        "opacity": "1"
+      })
+    }, 10);
+  };
+
+  RGZ.bookOfficeTime = function() {
+    //memorise value of select?
+    $("#book-office-aux").removeClass("gone");
+    setTimeout(function() {
+      $("#book-office-aux").css({
         "opacity": "1"
       })
     }, 10);
@@ -405,11 +499,28 @@
             <input id="book-counter-mail" placeholder="e-mail" onfocus="this.placeholder=''" onblur="this.placeholder='e-mail'">
             <div id="book-counter-check" onclick="RGZ.checkboxClicked(this);"><i class="fa fa-square-o"></i></div>
             <label class="checkbox-label" onclick="RGZ.checkboxClicked($('#book-counter-check'));">Потврђујем да имам потпуну и правилно попуњену документацију, као и исправно уплаћене таксе за захтев/предмет због којег заказујем термин. Такође, пристајем да наредна странка буде услужена уколико се не појавим у заказано време.</label>
-            <!--<button class="g-recaptcha" data-sitekey="6LfwyjYUAAAAAFRNVQ7w4LQjP3wQp4PwUG0ef19r" data-callback="YourOnSubmitFn">Submit</button>-->
             <div class="form-button">ЗАКАЖИ</div>
           </div>
         </div>
         <div id="book-offices" class="gone">
+          <select id="office-select" onchange="$RGZ.fetchOfficeTimes();">
+            <option disabled selected hidden>ИЗАБЕРИТЕ КАНЦЕЛАРИЈУ...</option>
+            <option value="1">Канцеларија 1</option>
+            <option value="2">Канцеларија 2</option>
+            <option value="3">Канцеларија 3</option>
+            <option value="4">Канцеларија 4</option>
+          </select>
+          <select id="office-time-select" class="gone" onchange="$RGZ.bookOfficeTime();">
+          </select>
+          <div id="book-office-aux" class="aux-container gone">
+            <input id="book-office-name" placeholder="име и презиме ✱" onfocus="this.placeholder=''" onblur="this.placeholder='име и презиме ✱'">
+            <input id="book-office-id" placeholder="број личне карте ✱" onfocus="this.placeholder=''" onblur="this.placeholder='број личне карте ✱'">
+            <input id="book-office-phone" placeholder="телефон" onfocus="this.placeholder=''" onblur="this.placeholder='телефон'">
+            <input id="book-office-mail" placeholder="e-mail" onfocus="this.placeholder=''" onblur="this.placeholder='e-mail'">
+            <div id="book-office-check" onclick="RGZ.checkboxClicked(this);"><i class="fa fa-square-o"></i></div>
+            <label class="checkbox-label" onclick="RGZ.checkboxClicked($('#book-office-check'));">Потврђујем да имам потпуну и правилно попуњену документацију, као и исправно уплаћене таксе за захтев/предмет због којег заказујем термин. Такође, пристајем да наредна странка буде услужена уколико се не појавим у заказано време.</label>
+            <div class="form-button">ЗАКАЖИ</div>
+          </div>
         </div>
       `);
       $(".content-box-loader").css({
