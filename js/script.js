@@ -438,9 +438,9 @@
           <option disabled value="0">ПРВО ИЗАБЕРИТЕ ДАТУМ</option>
         `;
         insertHtml("#office-time-select", selectTimeHtml);
-        $("#office-time-select").removeClass("gone");
+        $("#office-time-select, #office-day-select").removeClass("gone");
         setTimeout(function() {
-          $("#office-time-select").css({
+          $("#office-time-select, #office-day-select").css({
             "opacity": "1"
           });
         }, 10);
