@@ -892,7 +892,7 @@ ul {
   text-align: justify;
 }
 
-#docs-select, #counter-select, #counter-time-select, #office-select, #office-time-select {
+#docs-select, #counter-select, #counter-time-select, #counter-day-select, #office-select, #office-time-select, #office-day-select {
   font-family: 'Russo One', sans-serif;
   font-size: 2.5vh;
   color: #333;
@@ -910,20 +910,19 @@ ul {
   transition: opacity 0.4s ease;
 }
 
-/*#counter-time-select, #office-time-select {
-  opacity: 0;
-}*/
+#counter-day-select, #office-day-select {
+  margin-bottom: 4vh;
+}
 
 #counter-select, #office-select {
   margin-bottom: 4vh;
 }
 
-#counter-select, #counter-time-select, #office-select, #office-time-select {
+#counter-select, #counter-time-select, #counter-day-select, #office-select, #office-time-select, #office-day-select {
   border-color: #589662;
 }
 
 #docsaux, #book-counter-aux, #book-office-aux {
-  /*opacity: 0;*/
   -webkit-transition: opacity 0.4s ease;
   -moz-transition: opacity 0.4s ease;
   transition: opacity 0.4s ease;
@@ -1055,7 +1054,7 @@ a.docsaux-item-download:hover {
   #book-counter-aux, #book-office-aux {
     padding: 0;
   }
-  #docs-select, #counter-select, #counter-time-select, #office-select, #office-time-select {
+  #docs-select, #counter-select, #counter-time-select, #counter-day-select, #office-select, #office-time-select, #office-day-select {
     margin-left: 0;
     margin-right: 0;
     width: 100%;

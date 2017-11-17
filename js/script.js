@@ -97,14 +97,7 @@
   var mouseoverLock = 0;
   RGZ.tileMouseOver = function(e) {
     RGZ.tileHoverID = $(e).attr("id");
-    console.log($(e).attr("id"));
     if (mouseoverLock != 0) return;
-
-    var date = new Date();
-    var millis = date.getMilliseconds();
-    var seconds = date.getSeconds();
-    console.log("entered mouseover " + seconds + ":" + millis);
-
     mouseoverLock = 1;
     $(".tile").removeClass("col-4").addClass("col-3").css({
       "max-width": "25%"
@@ -367,11 +360,11 @@
   RGZ.fetchCounterTimes = function() {
     //memorise value of select?
     $("#counter-select").prop("disabled", true);
-    $("#book-counter-aux, #counter-time-select").css({
+    $("#book-counter-aux, #counter-time-select, #counter-day-select").css({
       "opacity": "0"
     });
     setTimeout(function() {
-      $("#book-counter-aux, #counter-time-select").addClass("gone");
+      $("#book-counter-aux, #counter-time-select, #counter-day-select").addClass("gone");
       $("#book-counter-aux>input").val("");
       $("#book-counter-check>i").removeClass("fa-check-square-o").addClass("fa-square-o");
     }, 400);
@@ -383,24 +376,21 @@
       //api call
       setTimeout(function() { //this when response received
         //generate html
-        var selectHtml = `
-          <option disabled selected hidden>ИЗАБЕРИТЕ ТЕРМИН...</option>
-          <option value="1">07:00</option>
-          <option value="2">08:00</option>
-          <option value="3">09:00</option>
-          <option value="4">10:00</option>
-          <option value="5">11:00</option>
-          <option value="6">12:00</option>
-          <option value="7">13:00</option>
-          <option value="8">14:00</option>
-          <option value="9">15:00</option>
-          <option value="10">16:00</option>
-          <option value="11">17:00</option>
+        var selectDayHtml = `
+          <option disabled value="0" selected hidden>ИЗАБЕРИТЕ ДАТУМ...</option>
+          <option value="1">17.11.2017.</option>
+          <option value="2">18.11.2017.</option>
+          <option value="3">19.11.2017.</option>
         `;
-        insertHtml("#counter-time-select", selectHtml);
-        $("#counter-time-select").removeClass("gone");
+        insertHtml("#counter-day-select", selectDayHtml);
+        var selectTimeHtml = `
+          <option disabled value="0" selected hidden>ИЗАБЕРИТЕ ТЕРМИН...</option>
+          <option disabled value="0">ПРВО ИЗАБЕРИТЕ ДАТУМ</option>
+        `;
+        insertHtml("#counter-time-select", selectTimeHtml);
+        $("#counter-time-select, #counter-day-select").removeClass("gone");
         setTimeout(function() {
-          $("#counter-time-select").css({
+          $("#counter-time-select, #counter-day-select").css({
             "opacity": "1"
           });
         }, 10);
@@ -420,11 +410,11 @@
   RGZ.fetchOfficeTimes = function() {
     //memorise value of select?
     $("#office-select").prop("disabled", true);
-    $("#book-office-aux, #counter-time-select").css({
+    $("#book-office-aux, #office-time-select, #office-day-select").css({
       "opacity": "0"
     });
     setTimeout(function() {
-      $("#book-office-aux, #office-time-select").addClass("gone");
+      $("#book-office-aux, #office-time-select, #office-day-select").addClass("gone");
       $("#book-office-aux>input").val("");
       $("#book-office-check>i").removeClass("fa-check-square-o").addClass("fa-square-o");
     }, 400);
@@ -436,21 +426,18 @@
       //api call
       setTimeout(function() { //this when response received
         //generate html
-        var selectHtml = `
-          <option disabled selected hidden>ИЗАБЕРИТЕ ТЕРМИН...</option>
-          <option value="1">07:00</option>
-          <option value="2">08:00</option>
-          <option value="3">09:00</option>
-          <option value="4">10:00</option>
-          <option value="5">11:00</option>
-          <option value="6">12:00</option>
-          <option value="7">13:00</option>
-          <option value="8">14:00</option>
-          <option value="9">15:00</option>
-          <option value="10">16:00</option>
-          <option value="11">17:00</option>
+        var selectDayHtml = `
+          <option disabled value="0" selected hidden>ИЗАБЕРИТЕ ДАТУМ...</option>
+          <option value="1">17.11.2017.</option>
+          <option value="2">18.11.2017.</option>
+          <option value="3">19.11.2017.</option>
         `;
-        insertHtml("#office-time-select", selectHtml);
+        insertHtml("#office-day-select", selectDayHtml);
+        var selectTimeHtml = `
+          <option disabled value="0" selected hidden>ИЗАБЕРИТЕ ТЕРМИН...</option>
+          <option disabled value="0">ПРВО ИЗАБЕРИТЕ ДАТУМ</option>
+        `;
+        insertHtml("#office-time-select", selectTimeHtml);
         $("#office-time-select").removeClass("gone");
         setTimeout(function() {
           $("#office-time-select").css({
@@ -470,6 +457,20 @@
     }, 400);
   };
 
+  RGZ.bookCounterDay = function() {
+    //fetch times for selected day from json
+    var selectTimeHtml = `
+      <option disabled value="0" selected hidden>ИЗАБЕРИТЕ ТЕРМИН...</option>
+      <option value="1">07:00</option>
+      <option value="2">08:00</option>
+      <option value="3">09:00</option>
+      <option value="4">10:00</option>
+      <option value="5">11:00</option>
+      <option value="6">12:00</option>
+    `;
+    insertHtml("#counter-time-select", selectTimeHtml);
+  };
+
   RGZ.bookCounterTime = function() {
     //memorise value of select?
     $("#book-counter-aux").removeClass("gone");
@@ -478,6 +479,20 @@
         "opacity": "1"
       })
     }, 10);
+  };
+
+  RGZ.bookOfficeDay = function() {
+    //fetch times for selected day from json
+    var selectTimeHtml = `
+      <option disabled value="0" selected hidden>ИЗАБЕРИТЕ ТЕРМИН...</option>
+      <option value="6">12:00</option>
+      <option value="7">13:00</option>
+      <option value="8">14:00</option>
+      <option value="9">15:00</option>
+      <option value="10">16:00</option>
+      <option value="11">17:00</option>
+    `;
+    insertHtml("#office-time-select", selectTimeHtml);
   };
 
   RGZ.bookOfficeTime = function() {
@@ -509,11 +524,13 @@
         </div>
         <div id="book-counters">
           <select id="counter-select" onchange="$RGZ.fetchCounterTimes();">
-            <option disabled selected hidden>ИЗАБЕРИТЕ ШАЛТЕР...</option>
+            <option disabled value="0" selected hidden>ИЗАБЕРИТЕ ШАЛТЕР...</option>
             <option value="1">Шалтер 1</option>
             <option value="2">Шалтер 2</option>
             <option value="3">Шалтер 3</option>
             <option value="4">Шалтер 4</option>
+          </select>
+          <select id="counter-day-select" class="gone" onchange="$RGZ.bookCounterDay();">
           </select>
           <select id="counter-time-select" class="gone" onchange="$RGZ.bookCounterTime();">
           </select>
@@ -529,11 +546,13 @@
         </div>
         <div id="book-offices" class="gone">
           <select id="office-select" onchange="$RGZ.fetchOfficeTimes();">
-            <option disabled selected hidden>ИЗАБЕРИТЕ КАНЦЕЛАРИЈУ...</option>
+            <option disabled value="0" selected hidden>ИЗАБЕРИТЕ КАНЦЕЛАРИЈУ...</option>
             <option value="1">Канцеларија 1</option>
             <option value="2">Канцеларија 2</option>
             <option value="3">Канцеларија 3</option>
             <option value="4">Канцеларија 4</option>
+          </select>
+          <select id="office-day-select" class="gone" onchange="$RGZ.bookOfficeDay();">
           </select>
           <select id="office-time-select" class="gone" onchange="$RGZ.bookOfficeTime();">
           </select>
@@ -753,7 +772,7 @@
         </div>
         <div id="documentation">
           <select id="docs-select" onchange="$RGZ.infoDocs();">
-            <option disabled selected hidden>ИЗАБЕРИТЕ ДОКУМЕНТАЦИЈУ...</option>
+            <option disabled value="0" selected hidden>ИЗАБЕРИТЕ ДОКУМЕНТАЦИЈУ...</option>
             <option value="1">Документ 1</option>
             <option value="2">Документ 2</option>
             <option value="3">Захтев 1</option>
