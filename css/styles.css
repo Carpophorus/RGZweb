@@ -840,7 +840,7 @@ ul {
 }
 
 #accordion {
-  padding-top: 1vh;
+  padding: 1vh 5vh 10vh 5vh;
   opacity: 0;
 }
 
