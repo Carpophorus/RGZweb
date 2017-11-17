@@ -66,21 +66,21 @@
 
   <div id="tiles" class="row" onclick="$RGZ.mobileMenuTouchOutside();">
 
-    <div id="book" class="tile hidden-md-down col-4" onmouseover="RGZ.tileMouseOver(this);" onmouseout="RGZ.tileMouseOut();">
+    <div id="book" class="tile hidden-md-down col-4" onmouseenter="$RGZ.tileMouseOver(this);" onmouseleave="$RGZ.tileMouseOut();">
       <div class="tile-img"></div>
       <div class="tile-title">ЗАКАЗИВАЊЕ</div>
       <div class="tile-line hidden"></div>
       <div class="tile-text hidden">Закажите термин на шалтеру или у одређеним канцеларијама за предају захтева или предмета.</div>
       <div class="tile-button hidden" onclick="$RGZ.navi(1);">ЗАКАЖИ&nbsp;ТЕРМИН</div>
     </div>
-    <div id="stat" class="tile hidden-md-down col-4" onmouseover="RGZ.tileMouseOver(this);" onmouseout="RGZ.tileMouseOut();">
+    <div id="stat" class="tile hidden-md-down col-4" onmouseenter="$RGZ.tileMouseOver(this);" onmouseleave="$RGZ.tileMouseOut();">
       <div class="tile-img"></div>
       <div class="tile-title">СТАЊЕ&nbsp;ПРЕДМЕТА</div>
       <div class="tile-line hidden"></div>
       <div class="tile-text hidden">Сазнајте у ком степену обраде је Ваш захтев или предмет &mdash; потребан Вам је само деловодни број.</div>
       <div class="tile-button hidden" onclick="$RGZ.navi(2);">ПОГЛЕДАЈ&nbsp;СТАЊЕ</div>
     </div>
-    <div id="info" class="tile hidden-md-down col-4" onmouseover="RGZ.tileMouseOver(this);" onmouseout="RGZ.tileMouseOut();">
+    <div id="info" class="tile hidden-md-down col-4" onmouseenter="$RGZ.tileMouseOver(this);" onmouseleave="$RGZ.tileMouseOut();">
       <div class="tile-img"></div>
       <div class="tile-title">ИНФОРМАЦИЈЕ</div>
       <div class="tile-line hidden"></div>
@@ -166,7 +166,7 @@
 
   </div>
 
-  <div id="foot" onmouseover="$RGZ.footMouseOver();" onmouseleave="$RGZ.footMouseOut();" class="hidden-md-down">
+  <div id="foot" onmouseenter="$RGZ.footMouseOver();" onmouseleave="$RGZ.footMouseOut();" class="hidden-md-down">
     <div id="foot-contact">КОНТАКТ</div>
     <div id="foot-title" class="hidden">РЕПУБЛИЧКИ&nbsp;ГЕОДЕТСКИ&nbsp;ЗАВОД</div>
     <div id="foot-logo" class="hidden"></div>
